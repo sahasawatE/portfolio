@@ -3,7 +3,7 @@ import reactIcon from '../img/logo512.png'
 export default function Skills(){
     return(
         <div className='p-16 h-screen'>
-            <p className='text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-red-500 drop-shadow-xl'>SKILLS</p>
+            <p className='text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-red-500'>SKILLS</p>
             <br />
             <div className='w-12/12 h-88'>
                 <div className='grid-rows-3 flex flex-col'>
@@ -51,6 +51,11 @@ export default function Skills(){
                     </div>
                 </div>
             </div>
+            {/* <div>And The Most Important Thing</div>
+            <div>I Can</div>
+            <div>Center</div>
+            <div>a</div>
+            <div>div</div> */}
         </div>
     );
 }
