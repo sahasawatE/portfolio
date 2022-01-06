@@ -1,9 +1,12 @@
+import react from 'react';
+import { langContext } from '../langContext';
 import reactIcon from '../img/logo512.png'
 
 export default function Skills(){
+    const { lang } = react.useContext(langContext);
     return(
         <div className='p-16 h-screen'>
-            <p className='text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-red-500'>SKILLS</p>
+            <p className='text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-red-500'>{lang === 0 ? 'SKILLS' : 'ความสามารถ'}</p>
             <br />
             <div className='w-12/12 h-88'>
                 <div className='grid-rows-3 flex flex-col'>

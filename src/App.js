@@ -1,3 +1,5 @@
+import react from 'react';
+import {langContext} from './langContext';
 import NavBar from "./Components/NavBar";
 import Main from './Components/Main';
 import Activities from "./Components/Activities";
@@ -6,6 +8,7 @@ import Skills from "./Components/Skills";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 function App() {
+  const [lang, setLang] = react.useState(0); //0 is eng, 1 is thai
   const mobile = useMediaQuery('(max-width:500px)');
   if(mobile){
     return (
@@ -16,7 +19,7 @@ function App() {
   }
   else{
     return (
-      <div>
+      <langContext.Provider value={{lang, setLang}}>
         <NavBar />
         <div className='snap-y snap-mandatory overflow-scroll'>
           <div className='snap-start'>
@@ -32,7 +35,7 @@ function App() {
             <Skills />
           </div>
         </div>
-      </div>
+      </langContext.Provider>
     );
   }
 }

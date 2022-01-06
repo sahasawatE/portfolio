@@ -1,20 +1,23 @@
-import { Grid, InputBase,Paper } from '@mui/material';
-import {SearchIcon} from '@heroicons/react/outline'
+import react from 'react';
+import { langContext } from '../langContext';
 
 export default function NavBar(){
+    const {lang, setLang} = react.useContext(langContext);
     return(
         <div className='sticky z-50 top-0 w-auto backdrop-blur-md bg-opacity-75 bg-white'>
             <div className='grid grid-cols-2'>
                 <div className='grid p-4'>
                     <div className='font-semibold text-zinc-600 my-auto pl-6'>MyPortfolio</div>
                 </div>
-                <div className='grid p-4 justify-end'>
-                    <Paper elevation={0} style={{borderRadius:'12px'}} className='border-solid border-2 border-zinc-200 md:w-10/12 sm:w-40'>
-                        <Grid container direction='row'>
-                            <Grid item xs={2}><SearchIcon className='h-6 w-6 m-auto mt-1 text-zinc-300' /></Grid>
-                            <Grid item xs={10} className='h-8 w-60 m-auto'><InputBase placeholder='Search...' type='text' /></Grid>
-                        </Grid>
-                    </Paper>
+                <div className='grid justify-end p-4 mr-8'>
+                    <div className='w-20 flex flex-row justify-around'>
+                        <div className='hover:cursor-pointer' onClick={() => setLang(1)}>
+                            <div className={lang === 1 ? 'font-bold' : 'font-normal'}>TH</div>
+                        </div>
+                        <div className='hover:cursor-pointer' onClick={() => setLang(0)}>
+                            <div className={lang === 0 ? 'font-bold' : 'font-normal'}>EN</div>
+                        </div>
+                    </div>
                 </div>
                 <div className='grid bg-red-400'></div>
             </div>
