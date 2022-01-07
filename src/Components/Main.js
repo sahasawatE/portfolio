@@ -1,7 +1,11 @@
 import react from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 import { langContext } from '../langContext';
 import HokImg from '../img/1531830261478.JPG';
 import textDate from '../text.json';
+
+Aos.init({ duration: 2000 })
 
 export default function Main(){
     const {lang} = react.useContext(langContext);
@@ -26,11 +30,11 @@ export default function Main(){
             <div className='m-auto pt-2 h-32 md:w-144 sm:w-10/12'>
                 <p className=' md:text-4xl sm:text-2xl sm:flex sm:justify-center font-extrabold text-transparent bg-clip-text bg-gradient-to-br  from-pink-500 to-fuchsia-400'>{text.university}</p>
             </div>
-            <div className='grid grid-cols-2 m-auto w-10/12'>
-                <div className='md:w-8/12 sm:w-9/12 md:ml-20 animate-slideInleft'>
+            <div data-aos='fade-up' className='grid grid-cols-2 m-auto w-10/12'>
+                <div className='md:w-8/12 sm:w-9/12 md:ml-20'>
                     <img className='inline drop-shadow-2xl -z-10 rounded-2xl' src={HokImg} alt='hokimg' />
                 </div>
-                <div className='w-10/12 mr-2 flex justify-end animate-slideInleft'>
+                <div className='w-10/12 mr-2 flex justify-end'>
                     <div className='flex justify-start flex-col'>
                         <p className='pb-1 text-lg font-semibold'>{text.display.fullName}</p>
                         <p className='pb-1 text-mg font-medium'>{text.display.displayEducation}</p>
