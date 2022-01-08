@@ -2,6 +2,7 @@ import react from 'react';
 import {langContext} from './langContext';
 import NavBar from "./Components/NavBar";
 import Main from './Components/Main';
+import MobileMain from './MobileComponents/MobileMain';
 import Activities from "./Components/Activities";
 import Experience from "./Components/Experience";
 import Skills from "./Components/Skills";
@@ -12,9 +13,15 @@ function App() {
   const mobile = useMediaQuery('(max-width:500px)');
   if(mobile){
     return (
-      <div>
-        hok
-      </div>
+      <langContext.Provider value={{ lang, setLang }}>
+        <NavBar />
+        <div>
+          <MobileMain/>
+        </div>
+        activities
+        experiences
+        skills
+      </langContext.Provider>
     );
   }
   else{

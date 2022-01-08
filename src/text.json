@@ -7,7 +7,7 @@
             "fullName" : "Mr. Sahasawat Eungwanitchaphan",
             "displayEducation" : "B.Sc., Computer Science, May 2023",
             "displayGpax" : "Cumulative 2.52 GPAX",
-            "ToolsExperience" : [{"mySql" : "3 Years"},{"ReactJS" : "2 Years"},{"Express NodeJS" : "1 Years"},{"Figma" : "1 Years"},{"React Native" : "3 Months"},{"TailwindCSS" : "1 Month"}]
+            "ToolsExperience" : [{"mySql" : "3 Years"},{"ReactJS" : "2 Years"},{"Express NodeJS" : "1 Years"},{"Figma" : "1 Years"},{"Git" : "6 Months"},{"React Native" : "3 Months"},{"TailwindCSS" : "1 Month"}]
         },
         "activities" : {
             "bdms" : {
@@ -38,7 +38,7 @@
             "fullName" : "นาย สหสวรรษ อึ้งวณิชย์พันธ์",
             "displayEducation" : "ปริญญาตรี ภาควิชาคณิตศาสตร์และวิทยาการคอมพิวเตอร์ พฤษภาคม พ.ศ. 2566",
             "displayGpax" : "เกรดเฉลี่ย 2.52",
-            "ToolsExperience" : [{"mySql" : "3 ปี"},{"ReactJS" : "2 ปี"},{"Express NodeJS" : "1 ปี"},{"Figma" : "1 ปี"},{"React Native" : "3 เดือน"},{"TailwindCSS" : "1 เดือน"}]
+            "ToolsExperience" : [{"mySql" : "3 ปี"},{"ReactJS" : "2 ปี"},{"Express NodeJS" : "1 ปี"},{"Figma" : "1 ปี"},{"Git" : "6 เดือน"},{"React Native" : "3 เดือน"},{"TailwindCSS" : "1 เดือน"}]
         },
         "activities" : {
             "bdms" : {

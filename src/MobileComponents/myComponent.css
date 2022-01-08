@@ -1,0 +1,16 @@
+.myBubbleUI {
+	width: 100%;
+	max-width: 1000px;
+	height: 500px;
+	border-radius: 50px
+}
+
+.child {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	margin: auto;
+	flex-direction: column;
+}

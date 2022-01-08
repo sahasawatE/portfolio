@@ -31,7 +31,7 @@ export default function Main(){
                 <p className=' md:text-4xl sm:text-2xl sm:flex sm:justify-center font-extrabold text-transparent bg-clip-text bg-gradient-to-br  from-pink-500 to-fuchsia-400'>{text.university}</p>
             </div>
             <div data-aos='fade-up' className='grid grid-cols-2 m-auto w-10/12'>
-                <div className='md:w-8/12 sm:w-9/12 md:ml-20'>
+                <div className='md:w-8/12 md:h-10 sm:w-9/12 sm:h-10 md:ml-20'>
                     <img className='inline drop-shadow-2xl -z-10 rounded-2xl' src={HokImg} alt='hokimg' />
                 </div>
                 <div className='w-10/12 mr-2 flex justify-end'>
