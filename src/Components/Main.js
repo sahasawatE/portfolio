@@ -20,15 +20,15 @@ export default function Main(){
         }
     },[lang])
     return(
-        <div className='h-screen'>
-            <div className='m-auto md:h-24 sm:h-16 w-10/12 pt-5'>
-                <p className='flex justify-center md:text-6xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-l from-stone-500 to-stone-900'>{text.displayName}</p>
+        <div className='h-screen w-screen'>
+            <div className='m-auto md:h-24 sm:h-16 w-10/12 pt-5 inline'>
+                <p className='flex justify-center md:text-6xl sm:text-3xl font-extrabold text-stone-900'>{text.displayName}</p>
             </div>
             <div className='m-auto md:h-24 sm:h-16 w-10/12'>
-                <p className='flex justify-center md:text-6xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-l from-stone-500 to-stone-900'>{text.displaySurName}</p>
+                <p className='flex justify-center md:text-6xl sm:text-3xl font-extrabold text-stone-900'>{text.displaySurName}</p>
             </div>
             <div className='m-auto pt-2 h-32 md:w-144 sm:w-10/12'>
-                <p className=' md:text-4xl sm:text-2xl sm:flex sm:justify-center font-extrabold text-transparent bg-clip-text bg-gradient-to-br  from-pink-500 to-fuchsia-400'>{text.university}</p>
+                <p className=' md:text-4xl sm:text-2xl sm:flex sm:justify-center font-extrabold text-pink-400'>{text.university}</p>
             </div>
             <div data-aos='fade-up' className='grid grid-cols-2 m-auto w-10/12'>
                 <div className='md:w-8/12 md:h-10 sm:w-9/12 sm:h-10 md:ml-20'>

@@ -23,7 +23,7 @@ export default function Activities() {
         }
     }, [lang])
     return(
-        <div className='p-16 h-screen'>
+        <div className='p-16 h-screen w-screen'>
             <p className='text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-200'>{lang === 0 ? 'ACTIVITIES' : 'กิจกรรม'}</p>
             <br/>
             <div data-aos='fade-right' className='h-56 m-2 mb-16 flex flex-row'>

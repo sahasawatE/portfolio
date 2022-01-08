@@ -41,15 +41,15 @@ export default function MobileMain() {
         }
     }, [lang])
     return(
-        <div className='h-full pb-12 pt-4'>
+        <div className='h-full w-full pb-12 pt-4'>
             <div data-aos='fade-up' className='m-auto h-16 w-10/12 pt-5'>
-                <p className='flex justify-center text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-l from-stone-500 to-stone-900'>{text.displayName}</p>
+                <p className='flex justify-center text-3xl font-extrabold text-stone-900'>{text.displayName}</p>
             </div>
             <div data-aos='fade-up' data-aos-delay="200" className='m-auto h-16 w-10/12'>
-                <p className='flex justify-center text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-l from-stone-500 to-stone-900'>{text.displaySurName}</p>
+                <p className='flex justify-center text-3xl font-extrabold text-stone-900'>{text.displaySurName}</p>
             </div>
             <div data-aos='fade-up' data-aos-delay="800" className='m-auto pt-2 h-32 w-10/12'>
-                <p className='text-2xl flex justify-center font-extrabold text-transparent bg-clip-text bg-gradient-to-br  from-pink-500 to-fuchsia-400'>{text.university}</p>
+                <p className='text-2xl flex justify-center font-extrabold text-pink-400'>{text.university}</p>
             </div>
             <div data-aos='fade-up' data-aos-delay="1000" className='w-9/12 h-auto m-auto'>
                 <img className='inline drop-shadow-2xl -z-10 rounded-2xl' src={HokImg} alt='hokimg' />
@@ -64,10 +64,12 @@ export default function MobileMain() {
                 </div>
                 <BubbleUI options={options} className="myBubbleUI">
                     {text.display.ToolsExperience.map((value, index) => {
-                        return <div key={`itemNo${index}`} className={`child bg-gradient-to-br ${fromcolors[index]} ${tocolors[index]}`}>
-                            <p className='text-center font-semibold'>{Object.keys(value)}</p>
-                            <p className='text-center'>{Object.values(value)}</p>
-                        </div>
+                        return (
+                            <div key={`itemNo${index}`} className={`child bg-gradient-to-br ${fromcolors[index]} ${tocolors[index]} animate-float`}>
+                                <p className='text-center font-semibold'>{Object.keys(value)}</p>
+                                <p className='text-center'>{Object.values(value)}</p>
+                            </div>
+                        );
                     })}
                 </BubbleUI>
             </div>

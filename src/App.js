@@ -26,23 +26,25 @@ function App() {
   }
   else{
     return (
-      <langContext.Provider value={{lang, setLang}}>
-        <NavBar />
-        <div className='snap-y snap-mandatory overflow-scroll'>
-          <div className='snap-start'>
-            <Main />
+      <div className='flex justify-center flex-col'>
+        <langContext.Provider value={{ lang, setLang }}>
+          <NavBar />
+          <div className='snap-y snap-mandatory overflow-scroll'>
+            <div className='snap-start'>
+              <Main />
+            </div>
+            <div className='snap-start'>
+              <Activities />
+            </div>
+            <div className='snap-start'>
+              <Experience />
+            </div>
+            <div className='snap-start'>
+              <Skills />
+            </div>
           </div>
-          <div className='snap-start'>
-            <Activities />
-          </div>
-          <div className='snap-start'>
-            <Experience />
-          </div>
-          <div className='snap-start'>
-            <Skills />
-          </div>
-        </div>
-      </langContext.Provider>
+        </langContext.Provider>
+      </div>
     );
   }
 }
