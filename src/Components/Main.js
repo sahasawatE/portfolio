@@ -20,8 +20,8 @@ export default function Main(){
         }
     },[lang])
     return(
-        <div className='h-screen w-screen'>
-            <div className='m-auto md:h-24 sm:h-16 w-10/12 pt-5 inline'>
+        <div className='pb-10'>
+            <div className='m-auto md:h-24 sm:h-16 w-10/12 pt-5'>
                 <p className='flex justify-center md:text-6xl sm:text-3xl font-extrabold text-stone-900'>{text.displayName}</p>
             </div>
             <div className='m-auto md:h-24 sm:h-16 w-10/12'>
@@ -30,11 +30,11 @@ export default function Main(){
             <div className='m-auto pt-2 h-32 md:w-144 sm:w-10/12'>
                 <p className=' md:text-4xl sm:text-2xl sm:flex sm:justify-center font-extrabold text-pink-400'>{text.university}</p>
             </div>
-            <div data-aos='fade-up' className='grid grid-cols-2 m-auto w-10/12'>
-                <div className='md:w-8/12 md:h-10 sm:w-9/12 sm:h-10 md:ml-20'>
-                    <img className='inline drop-shadow-2xl -z-10 rounded-2xl' src={HokImg} alt='hokimg' />
+            <div data-aos='fade-up' className='grid grid-cols-2 m-auto w-10/12 h-auto'>
+                <div className='md:w-8/12 sm:w-9/12 md:ml-20 h-auto'>
+                    <img className='inline drop-shadow-xl rounded-2xl' src={HokImg} alt='hokimg' />
                 </div>
-                <div className='w-10/12 mr-2 flex justify-end'>
+                <div className='w-10/12 flex justify-end'>
                     <div className='flex justify-start flex-col'>
                         <p className='pb-1 text-lg font-semibold'>{text.display.fullName}</p>
                         <p className='pb-1 text-mg font-medium'>{text.display.displayEducation}</p>

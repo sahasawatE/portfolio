@@ -41,7 +41,8 @@ export default function MobileMain() {
         }
     }, [lang])
     return(
-        <div className='h-full w-full pb-12 pt-4'>
+        <div className='h-full w-full pb-12'>
+            <div className='h-2'></div>
             <div data-aos='fade-up' className='m-auto h-16 w-10/12 pt-5'>
                 <p className='flex justify-center text-3xl font-extrabold text-stone-900'>{text.displayName}</p>
             </div>
@@ -52,10 +53,10 @@ export default function MobileMain() {
                 <p className='text-2xl flex justify-center font-extrabold text-pink-400'>{text.university}</p>
             </div>
             <div data-aos='fade-up' data-aos-delay="1000" className='w-9/12 h-auto m-auto'>
-                <img className='inline drop-shadow-2xl -z-10 rounded-2xl' src={HokImg} alt='hokimg' />
+                <img className='inline drop-shadow-xl -z-10 rounded-2xl' src={HokImg} alt='hokimg' />
             </div>
-            <div data-aos='fade-up' className='mt-4 flex justify-center flex-col'>
-                <div className='flex justify-center flex-col'>
+            <div data-aos='fade-up' className='mt-10 flex justify-center flex-col'>
+                <div className='flex justify-center flex-col mx-6'>
                     <p className='pb-1 text-lg font-semibold text-center'>{text.display.fullName}</p>
                     <p className='pb-1 text-mg font-medium text-center'>{text.display.displayEducation}</p>
                     <p className='pb-4 text-md font-medium text-center'>{text.display.displayGpax}</p>
