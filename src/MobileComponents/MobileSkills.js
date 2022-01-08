@@ -23,7 +23,7 @@ export default function MobileSkills() {
     }
     return (
         <div className='h-auto'>
-            <p className='p-16 text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-red-500'>{lang === 0 ? 'SKILLS' : 'ความสามารถ'}</p>
+            <p className='p-16 text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-red-500'>{lang === 0 ? 'SKILLS' : 'ความสามารถ'}</p>
             <br />
             <div className='w-12/12 h-88'>
                 <BubbleUI options={options} className="myBubbleUI">

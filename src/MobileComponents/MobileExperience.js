@@ -24,7 +24,7 @@ export default function MobileExperience() {
     }, [lang])
     return (
         <div className='p-16 h-auto'>
-            <p className='text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-200'>{lang === 0 ? 'EXPERIENCES' : 'ประสบการณ์'}</p>
+            <p className='text-4xl pb-4 font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-200'>{lang === 0 ? 'EXPERIENCES' : 'ประสบการณ์'}</p>
             <br />
             <div data-aos='fade-up' className='w-88 h-full m-auto mb-10'>
                 <img className='h-56 drop-shadow-xl m-auto hover:cursor-pointer hover:transition-transform hover:scale-105' onClick={() => setSelectImg(bitkub)} src={bitkub} alt='bitkub' />
