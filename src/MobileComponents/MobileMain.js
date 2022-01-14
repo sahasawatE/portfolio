@@ -61,12 +61,12 @@ export default function MobileMain() {
                     <p className='pb-1 text-mg font-medium text-center'>{text.display.displayEducation}</p>
                     <p className='pb-4 text-md font-medium text-center'>{text.display.displayGpax}</p>
                     <br/>
-                    <p className='text-center'>{lang === 0 ? 'Tools Experience' : 'ประสบการณ์การใช้เครื่องมือ'}</p>
+                    <p className='text-center text-lg font-bold'>{lang === 0 ? 'Tools Experience' : 'ประสบการณ์การใช้เครื่องมือ'}</p>
                 </div>
                 <BubbleUI options={options} className="myBubbleUI">
                     {text.display.ToolsExperience.map((value, index) => {
                         return (
-                            <div key={`itemNo${index}`} className={`child bg-gradient-to-br ${fromcolors[index]} ${tocolors[index]} animate-float`}>
+                            <div key={`itemNo${index}`} className={`child bg-gradient-to-br ${fromcolors[index]} ${tocolors[index]} animate-float overflow-hidden`}>
                                 <p className='text-center font-semibold'>{Object.keys(value)}</p>
                                 <p className='text-center'>{Object.values(value)}</p>
                             </div>
