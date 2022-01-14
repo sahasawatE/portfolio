@@ -28,6 +28,12 @@
                 "date" : "August 2021 - December 2021",
                 "detail" : "I have started working on a senior project with my friend in August 2021. I have undertaken to develop a web application on desktop view and mobile view. In this project, I have used ReactJs as a framework and created Rest API using Express in NodeJs. For those components that I have used, I decided to use Material UI and React Bootstrap. I have developed both frontend and backend at the same time and tested the product while developing. I have worked so hard for 5 months. And finally, this project is launched on the internet for helping students and teachers at Trat to achieve their task of studying or teaching easier."
             }
+        },
+        "contact" : {
+            "phone" : "+66 90-043-3337",
+            "Email" : "hoklok3@gmail.com",
+            "github" : "https://github.com/sahasawatE",
+            "address" : "212/248 TopTel Thaphra, Phet Kasem Rd., Wattha pra sub-district, Bangkok Yai district, Bangkok 10600"
         }
     },
     "Thai" : {
@@ -59,6 +65,12 @@
                 "date" : "สิงหาคม 2564 - ธันวาคม 2564",
                 "detail" : "ผมได้เริ่มทำโปรเจ็คจบกับเพื่อนอีกคนนึงเมื่อเดือนสิงหาคม พ.ศ. 2564 ผมรับหน้าที่ในการพัฒนาเว็บแอพฯ ในมุมมองของ desktop และมือถือ และหน้าที่ของผมอีกอย่างคือต้องพัฒนาทั้งหน้าบ้านและหลังบ้าน รวมถึงดูแลเรื่องระบบความปลอดภัยของระบบด้วย ผมใช้ ReactJs เป็นเฟรมเวิร์คในการพัฒนาหน้าบ้าน และใช้ Express ที่เขียนด้วย NodeJs ในการพัฒนา RestAPI สำหรับหลังบ้าน ผมพัฒนาหน้าบ้านและหลังบ้าน รวมถึงทดสอบระบบไปพร้อม ๆ กัน ผมตั้งใจทำงานนี้อย่างมาก และทำงานหนักยาวนานติดต่อกัน 5 เดือน เพื่อให้งานออกมาสมบูรณ์แบบ และสุดท้าย โปรเจ็คนี้ก็ถูกนำขึ้นสู่โลกอินเตอร์เน็ต เพื่อช่วยให้นักเรียนที่จังหวัดตราดและคุณครูได้ประสบผลสำเร็จในเรื่องของการเรียน และการสอนได้ง่ายขึ้น"
             }
+        },
+        "contact" : {
+            "phone" : "+66 90-043-3337",
+            "Email" : "hoklok3@gmail.com",
+            "github" : "https://github.com/sahasawatE",
+            "address" : "212/248 ท๊อปเทลท่าพระ ซอยเพรชเกษม16 แขวงวัดท่าพระ เขตบางกอกใหญ่ กรุงเทพมหานคร 10600"
         }
     }
 }

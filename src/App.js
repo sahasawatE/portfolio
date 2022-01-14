@@ -9,6 +9,8 @@ import Experience from "./Components/Experience";
 import MobileExperience from './MobileComponents/MobileExperience';
 import Skills from "./Components/Skills";
 import MobileSkills from './MobileComponents/MobileSkills';
+import Contact from './Components/Contact';
+import MobileContact from './MobileComponents/MobileContact';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import './App.css';
 
@@ -24,6 +26,7 @@ function App() {
         {mobile ? <MobileActivities /> : <Activities />}
         {mobile ? <MobileExperience /> : <Experience />}
         {mobile ? <MobileSkills /> : <Skills />}
+        {mobile ? <MobileContact/> : <Contact/>}
       </langContext.Provider>
     </div>
   );
