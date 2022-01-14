@@ -33,7 +33,7 @@ export default function MobileSkills() {
                     </div>
                     <div className='child'>
                         <div className='top-0 flex justify-center'><img src={reactIcon} alt='reactNative' /></div>
-                        <div className='bottom-0 flex justify-center'>React nNative</div>
+                        <div className='bottom-0 flex justify-center'>React Native</div>
                     </div>
                     <div className='child'>
                         <div className='top-0 flex justify-center'><img alt='js' src="https://img.icons8.com/color/144/000000/javascript--v1.png" /></div>
