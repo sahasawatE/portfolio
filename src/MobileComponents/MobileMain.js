@@ -29,8 +29,8 @@ export default function MobileMain() {
         gravitation: 5
     }
 
-    const fromcolors = ['from-red-300', 'from-blue-300', 'from-slate-400', 'from-indigo-300', 'from-slate-500', 'from-blue-200', 'from-teal-400']
-    const tocolors = ['to-orange-300', 'to-cyan-200', 'to-gray-200', 'to-indigo-400', 'to-gray-400', 'to-sky-400', 'to-cyan-300']
+    const fromcolors = ['from-red-300', 'from-blue-300', 'from-slate-400', 'from-orange-600', 'from-indigo-300', 'from-slate-500', 'from-blue-200', 'from-orange-500', 'from-teal-400']
+    const tocolors = ['to-orange-300', 'to-cyan-200', 'to-gray-200', 'to-orange-300', 'to-indigo-400', 'to-gray-400', 'to-sky-400', 'to-orange-200', 'to-cyan-300']
 
     react.useEffect(() => {
         if (lang === 1) {

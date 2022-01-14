@@ -30,7 +30,7 @@ export default function Main(){
             <div className='m-auto pt-2 h-32 md:w-144 sm:w-10/12'>
                 <p className=' md:text-4xl sm:text-2xl sm:flex sm:justify-center font-extrabold text-pink-400'>{text.university}</p>
             </div>
-            <div data-aos='fade-up' className='grid grid-cols-2 m-auto w-10/12 h-auto'>
+            <div data-aos='fade-up' className='grid grid-cols-2 m-auto w-10/12 h-auto max-w-screen-lg'>
                 <div className='md:w-8/12 sm:w-9/12 md:ml-20 h-auto'>
                     <img className='inline drop-shadow-xl rounded-2xl' src={HokImg} alt='hokimg' />
                 </div>
