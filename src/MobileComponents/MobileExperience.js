@@ -27,9 +27,9 @@ export default function MobileExperience() {
         <div className='p-16 h-auto'>
             <p className='text-4xl pb-4 font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-200'>{lang === 0 ? 'EXPERIENCES' : 'ประสบการณ์'}</p>
             <br />
-            <div data-aos='fade-up' className='w-88 h-full m-auto mb-10'>
+            <div data-aos='fade-up' className='h-full m-auto mb-10'>
                 <CustomGallery images={[bitkub]} openModal={(img) => setSelectImg(img)} />
-                <div className='mt-4 h-40 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
+                <div className='mt-4 h-40 sm:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
                     <div className='pt-6 pl-6 pb-2 sticky'>
                         <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.bitkub.date}</p>
                     </div>
@@ -38,7 +38,7 @@ export default function MobileExperience() {
             </div>
             <div data-aos='fade-up' className='h-full m-2 mb-6'>
                 <CustomGallery images={[project]} openModal={(img) => setSelectImg(img)} />
-                <div className='mt-4 h-40 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
+                <div className='mt-4 h-40 sm:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
                     <div className='pt-6 pl-6 pb-2 sticky'>
                         <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.fianlProject.date}</p>
                     </div>
