@@ -29,7 +29,7 @@ export default function MobileActivities() {
             <br />
             <div data-aos='fade-up' className='h-full m-auto mb-10'>
                 <CustomGallery images={[bdms]} openModal={(img) => setSelectImg(img)} />
-                <div className='mt-4 h-40 sm:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
+                <div className='mt-4 h-40 md:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
                     <div className='pt-6 pb-2 sticky'>
                         <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.activities.bdms.date}</p>
                     </div>
@@ -38,7 +38,7 @@ export default function MobileActivities() {
             </div>
             <div data-aos='fade-up' className='h-full m-2 mb-6'>
                 <CustomGallery images={[figma]} openModal={(img) => setSelectImg(img)} />
-                <div className='mt-4 h-40 sm:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
+                <div className='mt-4 h-40 md:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
                     <div className='pt-6 pb-2 sticky'>
                         <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.activities.angalung.date}</p>
                     </div>

@@ -34,7 +34,7 @@ export default function CustomGallery({images = [], openModal = () => {}}) {
         }
     }
     return(
-        <div className="relative h-56 sm:w-80 overflow-hidden drop-shadow-xl m-auto">
+        <div className="relative h-56 md:w-80 overflow-hidden drop-shadow-xl m-auto">
             {images.map((value, index) => {
                 return(
                     <img className={`absolute inset-0 h-56 w-full transition-all ease-in-out duration-1000 transform ${selectedImg === index ? 'translate-x-0' : "translate-x-full"} slide m-auto hover:cursor-pointer`} key={index} alt={`imgNO${index}`} src={value} onClick={() => openModal(value)} />

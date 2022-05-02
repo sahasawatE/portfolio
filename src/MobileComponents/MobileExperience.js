@@ -29,7 +29,7 @@ export default function MobileExperience() {
             <br />
             <div data-aos='fade-up' className='h-full m-auto mb-10'>
                 <CustomGallery images={[bitkub]} openModal={(img) => setSelectImg(img)} />
-                <div className='mt-4 h-40 sm:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
+                <div className='mt-4 h-40 md:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
                     <div className='pt-6 pl-6 pb-2 sticky'>
                         <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.bitkub.date}</p>
                     </div>
@@ -38,7 +38,7 @@ export default function MobileExperience() {
             </div>
             <div data-aos='fade-up' className='h-full m-2 mb-6'>
                 <CustomGallery images={[project]} openModal={(img) => setSelectImg(img)} />
-                <div className='mt-4 h-40 sm:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
+                <div className='mt-4 h-40 md:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
                     <div className='pt-6 pl-6 pb-2 sticky'>
                         <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.fianlProject.date}</p>
                     </div>
