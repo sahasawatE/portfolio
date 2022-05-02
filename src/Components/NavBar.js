@@ -25,12 +25,12 @@ export default function NavBar(){
                         </div>
                     </div>
                     :
-                    <div className='w-60 flex flex-row justify-around'>
-                            <div className='flex flex-row w-8/12 justify-center pr-2 hover:cursor-pointer' onClick={() => window.open(cv, '_blank')}>
+                    <div className='w-80 flex flex-row justify-around'>
+                        <div className='flex text-right flex-row w-9/12 justify-center pr-2 hover:cursor-pointer' onClick={() => window.open(cv, '_blank')}>
                             <DocumentDownloadIcon className="h-6 w-6 text-blue-400"/>
                             <div className='text-blue-400'>{lang === 1 ? "ประวัติย่อ" : "Curriculum Vitae"}</div>
                         </div>
-                        <div className='flex flex-row justify-between w-4/12'>
+                        <div className='flex flex-row justify-between w-3/12'>
                             <GlobeAltIcon className="h-6 w-6 text-gray-500"/>
                             <div className='hover:cursor-pointer' onClick={() => setLang(1)}>
                                 <div className={lang === 1 ? 'font-bold' : 'font-normal'}>TH</div>

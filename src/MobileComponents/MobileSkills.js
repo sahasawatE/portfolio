@@ -4,6 +4,8 @@ import "react-bubble-ui/dist/index.css";
 import "./myComponent.css";
 import { langContext } from '../langContext';
 import reactIcon from '../img/logo512.png'
+import nodeJSIcon from '../img/kisspng-node-js-javascript-web-application-express-js-comp-5ae0f84e5e7537.0464945815246930703869.png'
+import socketIOIcon from '../img/kisspng-socket-io-websocket-node-js-javascript-library-5af655a0b6e393.8323079215260932167491.png'
 
 export default function MobileSkills() {
     const { lang } = react.useContext(langContext);
@@ -32,12 +34,12 @@ export default function MobileSkills() {
                         <div className='bottom-0 flex justify-center'>React</div>
                     </div>
                     <div className='child'>
-                        <div className='top-0 flex justify-center'><img src={reactIcon} alt='reactNative' /></div>
-                        <div className='bottom-0 flex justify-center'>React Native</div>
+                        <div className='top-0 flex justify-center'><img src={socketIOIcon} alt='scoketIO' /></div>
+                        <div className='bottom-0 flex justify-center'>Socket.IO</div>
                     </div>
                     <div className='child'>
-                        <div className='top-0 flex justify-center'><img alt='js' src="https://img.icons8.com/color/144/000000/javascript--v1.png" /></div>
-                        <div className='bottom-0 flex justify-center'>JS</div>
+                        <div className='top-0 flex justify-center'><img alt='nodejs' src={nodeJSIcon} /></div>
+                        <div className='bottom-0 flex justify-center'>NodeJS</div>
                     </div>
                     <div className='child'>
                         <div className='top-0 flex justify-center'><img alt='html5' src="https://img.icons8.com/color/144/000000/html-5--v1.png" /></div>

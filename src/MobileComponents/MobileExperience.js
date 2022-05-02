@@ -1,7 +1,8 @@
 import react from 'react';
 import { langContext } from '../langContext';
 import textDate from '../text.json';
-import { Modal } from '@mui/material';
+import CustomModal from '../elements/CustomModal';
+import CustomGallery from '../elements/CustomGallery';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import bitkub from '../img/bitkub.png';
@@ -27,7 +28,7 @@ export default function MobileExperience() {
             <p className='text-4xl pb-4 font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-200'>{lang === 0 ? 'EXPERIENCES' : 'ประสบการณ์'}</p>
             <br />
             <div data-aos='fade-up' className='w-88 h-full m-auto mb-10'>
-                <img className='h-56 drop-shadow-xl m-auto hover:cursor-pointer hover:transition-transform hover:scale-105' onClick={() => setSelectImg(bitkub)} src={bitkub} alt='bitkub' />
+                <CustomGallery images={[bitkub]} openModal={(img) => setSelectImg(img)} />
                 <div className='mt-4 h-40 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
                     <div className='pt-6 pl-6 pb-2 sticky'>
                         <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.bitkub.date}</p>
@@ -36,7 +37,7 @@ export default function MobileExperience() {
                 </div>
             </div>
             <div data-aos='fade-up' className='h-full m-2 mb-6'>
-                <img className='h-56 drop-shadow-xl m-auto hover:cursor-pointer hover:transition-transform hover:scale-105' onClick={() => setSelectImg(project)} src={project} alt='project' />
+                <CustomGallery images={[project]} openModal={(img) => setSelectImg(img)} />
                 <div className='mt-4 h-40 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
                     <div className='pt-6 pl-6 pb-2 sticky'>
                         <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.fianlProject.date}</p>
@@ -44,15 +45,7 @@ export default function MobileExperience() {
                     <p className='pl-6 pr-6 pb-6 md:text-md sm:text-sm font-sans text-zinc-800'>{text.experiences.fianlProject.detail}</p>
                 </div>
             </div>
-            <Modal
-                open={selectImg !== null}
-                onClose={() => setSelectImg(null)}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                BackdropProps={{ sx: { backdropFilter: 'blur(8px)', backgroundColor: 'rgba(0,0,0,0.4)' } }}
-            >
-                <img className='w-10/12 transform m-auto flex translate-y-1/4' src={selectImg} alt='selectedImg' />
-            </Modal>
+            <CustomModal open={selectImg !== null} close={() => setSelectImg(null)} img={selectImg} />
         </div>
     );
 }
