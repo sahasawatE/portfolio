@@ -8,6 +8,11 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import bitkub from '../img/bitkub.png';
 import project from '../img/projectFinal.png';
+import project1 from '../img/project1.png'
+import figmaProject1 from '../img/figmaProject1.png'
+import figmaProject2 from '../img/figmaProject2.png'
+import figmaProject3 from '../img/figmaProject3.png'
+import figmaProject4 from '../img/figmaProject4.png'
 
 Aos.init({duration: 2000})
 
@@ -54,7 +59,7 @@ export default function Experience(){
                         </div>
                     </Grid>
                     <Grid item xs={3}>
-                        <CustomGallery images={[project]} openModal={(img) => setSelectImg(img)} />
+                        <CustomGallery images={[project, project1, figmaProject1, figmaProject2, figmaProject3, figmaProject4]} openModal={(img) => setSelectImg(img)} />
                     </Grid>
                 </Grid>
             </div>
