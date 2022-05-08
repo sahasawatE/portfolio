@@ -15,11 +15,15 @@ import figmaProject3 from '../img/figmaProject3.png'
 import figmaProject4 from '../img/figmaProject4.png'
 
 Aos.init({duration: 2000})
+// const projectImgList = [project, project1]
+const projectImgList = [project, project1, figmaProject1, figmaProject2, figmaProject3, figmaProject4]
+const bitkubImgList = [bitkub]
 
 export default function Experience(){
     const { lang } = react.useContext(langContext);
     const [text, setText] = react.useState(textDate.Eng);
     const [selectImg, setSelectImg] = react.useState(null)
+    const [selectImgList, setSelectImgList] = react.useState([])
 
     react.useEffect(() => {
         if (lang === 1) {
@@ -35,11 +39,14 @@ export default function Experience(){
             <br />
             <div data-aos='fade-right' className='h-56 m-2 mb-16 flex flex-row'>
                 <Grid container justifyContent={'space-between'}>
-                    <Grid item xs={3}>
-                        <CustomGallery images={[bitkub]} openModal={(img) => setSelectImg(img)} />
+                    <Grid item xs={5}>
+                        <CustomGallery images={bitkubImgList} openModal={(img) => {
+                            setSelectImg(img)
+                            setSelectImgList(bitkubImgList)
+                        }} />
                     </Grid>
                     <Grid item xs={7}>
-                        <div className='ml-16 w-auto h-56 rounded-lg bg-slate-50 drop-shadow-2xl overflow-scroll overflow-x-hidden'>
+                        <div className='ml-16 w-fit h-56 rounded-lg bg-slate-50 drop-shadow-2xl overflow-scroll overflow-x-hidden'>
                             <div className='pt-6 pl-6 pb-2 sticky'>
                                 <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.bitkub.date}</p>
                             </div>
@@ -51,20 +58,23 @@ export default function Experience(){
             <div data-aos='fade-left' className='h-56 m-2 mb-6 flex flex-row'>
                 <Grid container justifyContent={'space-between'}>
                     <Grid item xs={7}>
-                        <div className='mr-16 w-auto h-56 rounded-lg bg-slate-50 drop-shadow-2xl overflow-scroll overflow-x-hidden'>
+                        <div className='mr-16 w-fit h-56 rounded-lg bg-slate-50 drop-shadow-2xl overflow-scroll overflow-x-hidden'>
                             <div className='pt-6 pl-6 pb-2 sticky'>
                                 <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.fianlProject.date}</p>
                             </div>
                             <p className='pl-6 pr-6 pb-6 md:text-md sm:text-sm font-sans text-zinc-800'>{text.experiences.fianlProject.detail}</p>
                         </div>
                     </Grid>
-                    <Grid item xs={3}>
-                        <CustomGallery images={[project, project1, figmaProject1, figmaProject2, figmaProject3, figmaProject4]} openModal={(img) => setSelectImg(img)} />
+                    <Grid item xs={5}>
+                        <CustomGallery images={projectImgList} openModal={(img) => {
+                            setSelectImg(img)
+                            setSelectImgList(projectImgList)
+                        }} />
                     </Grid>
                 </Grid>
             </div>
 
-            <CustomModal open={selectImg !== null} close={() => setSelectImg(null)} img={selectImg} />
+            <CustomModal open={selectImg !== null} close={() => setSelectImg(null)} img={selectImg} images={selectImgList} />
         </div>
     );
 }

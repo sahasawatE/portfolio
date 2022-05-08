@@ -9,11 +9,14 @@ import bdms from '../img/bdms.png';
 import figma from '../img/figma.png';
 
 Aos.init({ duration: 2000 })
+const bdmsImgList = [bdms]
+const figmaImgList = [figma]
 
 export default function MobileActivities() {
     const { lang } = react.useContext(langContext);
     const [text, setText] = react.useState(textDate.Eng);
     const [selectImg, setSelectImg] = react.useState(null);
+    const [selectImgList, setSelectImgList] = react.useState([])
 
     react.useEffect(() => {
         if (lang === 1) {
@@ -28,7 +31,10 @@ export default function MobileActivities() {
             <p className='text-4xl pb-4 font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-200'>{lang === 0 ? 'ACTIVITIES' : 'กิจกรรม'}</p>
             <br />
             <div data-aos='fade-up' className='h-full m-auto mb-10'>
-                <CustomGallery images={[bdms]} openModal={(img) => setSelectImg(img)} />
+                <CustomGallery images={bdmsImgList} openModal={(img) => {
+                    setSelectImg(img)
+                    setSelectImgList(bdmsImgList)
+                }} />
                 <div className='mt-4 h-40 md:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
                     <div className='pt-6 pb-2 sticky'>
                         <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.activities.bdms.date}</p>
@@ -37,7 +43,10 @@ export default function MobileActivities() {
                 </div>
             </div>
             <div data-aos='fade-up' className='h-full m-2 mb-6'>
-                <CustomGallery images={[figma]} openModal={(img) => setSelectImg(img)} />
+                <CustomGallery images={figmaImgList} openModal={(img) => {
+                    setSelectImg(img)
+                    setSelectImgList(figmaImgList)
+                }} />
                 <div className='mt-4 h-40 md:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
                     <div className='pt-6 pb-2 sticky'>
                         <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.activities.angalung.date}</p>
@@ -45,7 +54,7 @@ export default function MobileActivities() {
                     <p className='pl-6 pr-6 pb-6 md:text-md sm:text-sm font-sans text-zinc-800'>{text.activities.angalung.detail}</p>
                 </div>
             </div>
-            <CustomModal open={selectImg !== null} close={() => setSelectImg(null)} img={selectImg} />
+            <CustomModal open={selectImg !== null} close={() => setSelectImg(null)} img={selectImg} images={selectImgList} />
         </div>
     );
 }

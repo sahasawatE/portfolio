@@ -14,11 +14,14 @@ import figmaProject3 from '../img/figmaProject3.png'
 import figmaProject4 from '../img/figmaProject4.png'
 
 Aos.init({ duration: 2000 })
+const projectImgList = [project, project1, figmaProject1, figmaProject2, figmaProject3, figmaProject4]
+const bitkubImgList = [bitkub]
 
 export default function MobileExperience() {
     const { lang } = react.useContext(langContext);
     const [text, setText] = react.useState(textDate.Eng);
     const [selectImg, setSelectImg] = react.useState(null);
+    const [selectImgList, setSelectImgList] = react.useState([])
 
     react.useEffect(() => {
         if (lang === 1) {
@@ -33,7 +36,10 @@ export default function MobileExperience() {
             <p className='text-4xl pb-4 font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-200'>{lang === 0 ? 'EXPERIENCES' : 'ประสบการณ์'}</p>
             <br />
             <div data-aos='fade-up' className='h-full m-auto mb-10'>
-                <CustomGallery images={[bitkub]} openModal={(img) => setSelectImg(img)} />
+                <CustomGallery images={bitkubImgList} openModal={(img) => {
+                    setSelectImg(img)
+                    setSelectImgList(bitkubImgList)
+                }} />
                 <div className='mt-4 h-40 md:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
                     <div className='pt-6 pl-6 pb-2 sticky'>
                         <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.bitkub.date}</p>
@@ -42,7 +48,10 @@ export default function MobileExperience() {
                 </div>
             </div>
             <div data-aos='fade-up' className='h-full m-2 mb-6'>
-                <CustomGallery images={[project, project1, figmaProject1, figmaProject2, figmaProject3, figmaProject4]} openModal={(img) => setSelectImg(img)} />
+                <CustomGallery images={projectImgList} openModal={(img) => {
+                    setSelectImg(img)
+                    setSelectImgList(projectImgList)
+                }} />
                 <div className='mt-4 h-40 md:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
                     <div className='pt-6 pl-6 pb-2 sticky'>
                         <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.fianlProject.date}</p>
@@ -50,7 +59,7 @@ export default function MobileExperience() {
                     <p className='pl-6 pr-6 pb-6 md:text-md sm:text-sm font-sans text-zinc-800'>{text.experiences.fianlProject.detail}</p>
                 </div>
             </div>
-            <CustomModal open={selectImg !== null} close={() => setSelectImg(null)} img={selectImg} />
+            <CustomModal open={selectImg !== null} close={() => setSelectImg(null)} img={selectImg} images={selectImgList} />
         </div>
     );
 }
