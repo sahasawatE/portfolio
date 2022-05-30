@@ -1,11 +1,15 @@
 import react from 'react';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import { Grid } from '@mui/material'
 import { langContext } from '../langContext';
 import HokImg from '../img/1531830261478.JPG';
 import textDate from '../text.json';
 
 Aos.init({ duration: 2000 })
+
+const fromcolors = ['from-red-300', 'from-blue-400', 'from-slate-500', 'from-orange-600', 'from-indigo-300', 'from-slate-500', 'from-blue-300', 'from-orange-500', 'from-teal-400', 'from-stone-600']
+const tocolors = ['to-orange-300', 'to-cyan-300', 'to-gray-400', 'to-orange-300', 'to-indigo-400', 'to-gray-400', 'to-sky-400', 'to-orange-300', 'to-cyan-300', 'to-neutral-400']
 
 export default function Main(){
     const {lang} = react.useContext(langContext);
@@ -40,13 +44,19 @@ export default function Main(){
                         <p className='pb-1 text-mg font-medium'>{text.display.displayEducation}</p>
                         <p className='pb-4 text-md font-medium'>{text.display.displayGpax}</p>
                         <p>{lang === 0 ? 'Tools Experience' : 'ประสบการณ์การใช้เครื่องมือ'}</p>
-                        <ul className="marker:text-sky-500 list-disc pl-8 pt-2 space-y-3 text-gray-700">
+                        <Grid container spacing={1} className='pt-3 pl-2'>
                             {text.display.ToolsExperience.map((value, index) => {
                                 return(
-                                    <li key={`itemNo${index}`}>{Object.keys(value)}: {Object.values(value)}</li>
+                                    <Grid item key={`itemNo${index}`}>
+                                        <span className='px-4 py-2 rounded-full bg-gray-100 font-semibold text-sm flex align-center w-max cursor-default hover:bg-gray-200 transition duration-300 ease'>
+                                            <p className={`text-transparent bg-clip-text bg-gradient-to-r ${fromcolors[index]} ${tocolors[index]}`}>
+                                                {`${Object.keys(value)} (${Object.values(value)})`}
+                                            </p>
+                                        </span>
+                                    </Grid>
                                 );
                             })}
-                        </ul>
+                        </Grid>
                     </div>
                 </div>
             </div>

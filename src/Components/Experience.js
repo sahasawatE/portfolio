@@ -15,9 +15,10 @@ import figmaProject3 from '../img/figmaProject3.png'
 import figmaProject4 from '../img/figmaProject4.png'
 
 Aos.init({duration: 2000})
-// const projectImgList = [project, project1]
 const projectImgList = [project, project1, figmaProject1, figmaProject2, figmaProject3, figmaProject4]
 const bitkubImgList = [bitkub]
+
+const pageImageList = [bitkubImgList, projectImgList]
 
 export default function Experience(){
     const { lang } = react.useContext(langContext);
@@ -37,42 +38,47 @@ export default function Experience(){
         <div className='p-16 h-auto'>
             <p className='text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-200'>{lang === 0 ? 'EXPERIENCES' : 'ประสบการณ์'}</p>
             <br />
-            <div data-aos='fade-right' className='h-56 m-2 mb-16 flex flex-row'>
-                <Grid container justifyContent={'space-between'}>
-                    <Grid item xs={5}>
-                        <CustomGallery images={bitkubImgList} openModal={(img) => {
-                            setSelectImg(img)
-                            setSelectImgList(bitkubImgList)
-                        }} />
+            {pageImageList.map((value,index) => (
+                <div key={`experiences-${index}`} className='h-56 m-2 mb-16 flex flex-row' data-aos={index % 2 === 0 ? 'fade-right' : 'fade-left'}>
+                    <Grid container justifyContent={'space-between'}>
+                        {index % 2 === 0 ?
+                            <>
+                                <Grid item xs={5}>
+                                    <CustomGallery images={value} openModal={(img) => {
+                                        setSelectImg(img)
+                                        setSelectImgList(value)
+                                    }} />
+                                </Grid>
+                                <Grid item xs={7}>
+                                    <div className='ml-16 w-fit h-56 rounded-lg bg-slate-50 drop-shadow-2xl overflow-scroll overflow-x-hidden'>
+                                        <div className='pt-6 pl-6 pb-2 sticky'>
+                                            <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences[index].date}</p>
+                                        </div>
+                                        <p className='pl-6 pr-6 pb-6 md:text-md sm:text-sm font-sans text-zinc-800'>{text.experiences[index].detail}</p>
+                                    </div>
+                                </Grid>
+                            </>
+                            :
+                            <>
+                                <Grid item xs={7}>
+                                    <div className='mr-16 w-fit h-56 rounded-lg bg-slate-50 drop-shadow-2xl overflow-scroll overflow-x-hidden'>
+                                        <div className='pt-6 pl-6 pb-2 sticky'>
+                                            <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences[index].date}</p>
+                                        </div>
+                                        <p className='pl-6 pr-6 pb-6 md:text-md sm:text-sm font-sans text-zinc-800'>{text.experiences[index].detail}</p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={5}>
+                                    <CustomGallery images={value} openModal={(img) => {
+                                        setSelectImg(img)
+                                        setSelectImgList(value)
+                                    }} />
+                                </Grid>
+                            </>
+                        }
                     </Grid>
-                    <Grid item xs={7}>
-                        <div className='ml-16 w-fit h-56 rounded-lg bg-slate-50 drop-shadow-2xl overflow-scroll overflow-x-hidden'>
-                            <div className='pt-6 pl-6 pb-2 sticky'>
-                                <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.bitkub.date}</p>
-                            </div>
-                            <p className='pl-6 pr-6 pb-6 md:text-md sm:text-sm font-sans text-zinc-800'>{text.experiences.bitkub.detail}</p>
-                        </div>
-                    </Grid>
-                </Grid>
-            </div>
-            <div data-aos='fade-left' className='h-56 m-2 mb-6 flex flex-row'>
-                <Grid container justifyContent={'space-between'}>
-                    <Grid item xs={7}>
-                        <div className='mr-16 w-fit h-56 rounded-lg bg-slate-50 drop-shadow-2xl overflow-scroll overflow-x-hidden'>
-                            <div className='pt-6 pl-6 pb-2 sticky'>
-                                <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.fianlProject.date}</p>
-                            </div>
-                            <p className='pl-6 pr-6 pb-6 md:text-md sm:text-sm font-sans text-zinc-800'>{text.experiences.fianlProject.detail}</p>
-                        </div>
-                    </Grid>
-                    <Grid item xs={5}>
-                        <CustomGallery images={projectImgList} openModal={(img) => {
-                            setSelectImg(img)
-                            setSelectImgList(projectImgList)
-                        }} />
-                    </Grid>
-                </Grid>
-            </div>
+                </div>
+            ))}
 
             <CustomModal open={selectImg !== null} close={() => setSelectImg(null)} img={selectImg} images={selectImgList} />
         </div>

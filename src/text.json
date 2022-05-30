@@ -9,26 +9,30 @@
             "displayGpax" : "Cumulative 2.42 GPAX",
             "ToolsExperience" : [{"mySql" : "3 Years"},{"ReactJS" : "3 Years"},{"Express NodeJS" : "2 Years"},{"Postman" : "2 Years"},{"Figma" : "2 Years"},{"Git" : "1 Years"},{"Postman Test Script" : "6 Months"},{"React Native" : "3 Months"},{"TailwindCSS" : "1 Month"},{"Socket.IO": "1 Month"}]
         },
-        "activities" : {
-            "bdms" : {
+        "activities" : [
+            {
+                "name" : "bdms",
                 "date" : "February 2021",
                 "detail" : "I have joined a data science team on 23 - 24th February as a co-data analyzer. There are so many teams that send their project or idea to BDMS Hospital. Then, my team and the other 19 teams can pass a qualifying round. And then, BDMS Hospital has immediately stopped the Hackathon contest. With our brilliance, I think my team can win a final round and get reward"
             },
-            "angalung" : {
+            {
+                "name" : "angalung",
                 "date" : "April 2021",
                 "detail" : "In April 2021, I have enrolled on a UX/UI class and my teacher are gives work that he has to me and my friends. I and 5 others formed a team for the work. That work is designing an application for Angalung for old people in a nursing house. We decided to use Figma as a design tool."
             }
-        },
-        "experiences" : {
-            "bitkub" : {
+        ],
+        "experiences" : [
+            {
+                "name" : "bitkub ",
                 "date" : "14 June 2021 - 6 August 2021",
                 "detail" : "On 14th June 2021, I have started interning at the biggest blockchain technology company in Thailand named BitKub as a UX/UI and Graphic designer. I Have done some projects that on launched now such as Bitkub Chain, and Bitkub NFT Game. I have learned a lot there, so much skill I have been earned. Some of those skills are using Figma, and the most important thing is I have learned a process of working in a start-up company such as the agile process or scum process."
             },
-            "fianlProject" : {
+            {
+                "name" : "fianlProject",
                 "date" : "August 2021 - December 2021",
                 "detail" : "I have started working on a senior project with my friend in August 2021. I have undertaken to develop a web application on desktop view and mobile view. In this project, I have used ReactJs as a framework and created Rest API using Express in NodeJs. For those components that I have used, I decided to use Material UI and React Bootstrap. I have developed both frontend and backend at the same time and tested the product while developing. I have worked so hard for 5 months. And finally, this project is launched on the internet for helping students and teachers at Trat to achieve their task of studying or teaching easier."
             }
-        },
+        ],
         "contact" : {
             "phone" : "+66 90-043-3337",
             "Email" : "hoklok3@gmail.com",
@@ -46,26 +50,30 @@
             "displayGpax" : "เกรดเฉลี่ย 2.42",
             "ToolsExperience" : [{"mySql" : "3 ปี"},{"ReactJS" : "3 ปี"},{"Express NodeJS" : "2 ปี"},{"Postman" : "2 ปี"},{"Figma" : "2 ปี"},{"Git" : "1 ปี"},{"Postman Test Script" : "6 เดือน"},{"React Native" : "3 เดือน"},{"TailwindCSS" : "1 เดือน"},{"Socket.IO": "1 เดือน"}]
         },
-        "activities" : {
-            "bdms" : {
+        "activities" : [
+            {
+                "name" : "bdms",
                 "date" : "กุมภาพันธ์ 2564",
                 "detail" : "เมื่อวันที่ 23 - 24 กุมภาพันธ์ ผมได้มีโอกาสได้เข้าร่วมทีมในการแข่งขัน Hackathon ในฐานะผู้ช่วยนักวิเคราะห์ข้อมูล มีหลายทีมที่เข้าร่วมกิจกรรมนี้ แต่มีเพียง 20 ทีมเท่านั้นที่ผ่านรอบคัดเลือกมาได้และทีมผมก็เป็นหนึ่งในนั้น แต่แล้ว จู่ ๆ ทางผู้จัดก็ได้จบการแข่งขันลง ในความคิดเห็นของผม ผมคิดว่าทีมของผมสามารถชนะการแข่งขันรายการนี้ได้ ถ้าหากทางผู้จัดไม่ยกเลิกการแข่งขันเสียก่อน"
             },
-            "angalung" : {
+            {
+                "name" : "angalung",
                 "date" : "เมษายน 2564",
                 "detail" : "ในเดือนเมษายน ปี 2564 ผมได้มีโอกาสในการลงเรียนวิชา UX/UI ครูของผมได้ให้งานนึง ซึ่งก็คือออกแบบหน้าตาของแอพฯ สำหรับควบคุมและจัดการการเล่นอังกะลุงสำหรับบ้านพักคนชรา ผมได้จับกลุ่มกับเพื่อนอีก 5 คนเพื่อออกแบบแอพฯ นี้ในการออกแบบ กลุ่มของผมได้ตัดสินใจที่จะใช้ Figma เป็นเครื่องมือสำหรับออกแบบ"
             }
-        },
-        "experiences" : {
-            "bitkub" : {
+        ],
+        "experiences" : [
+            {
+                "name" : "bitkub",
                 "date" : "14 มิถุนายน 2564 - 6 สิงหาคม 2564",
                 "detail" : "เมื่อสันที่ 14 มิถุนายน พ.ศ. 2564 ผมได้เริ่มทำงานที่บริษัทที่เกี่ยวกับเทคโนโลยี Blockchain ที่ใหญ่ที่สุดในประเทศไทยที่ชื่อ BitKub ในตำแหน่ง นักออหแบบ UX/UI และ Graphic ผมได้ทำหลายงานด้วยกัน เช่น โปรเจ็ค BitKub Chain และ BitKub NTF Game ผมได้เรียนรู้หลายในตอนที่ฝึกงาน เช่น ทักษะในการใช้งาน Figma และที่สำคัญมากอย่างนึงที่ผมได้เรียนรู้คือ กระบวนการทำงานในบริษัท start-up เช่น Agile Process หรือ Scum process"
             },
-            "fianlProject" : {
+            {
+                "name" : "fianlProject",
                 "date" : "สิงหาคม 2564 - ธันวาคม 2564",
                 "detail" : "ผมได้เริ่มทำโปรเจ็คจบกับเพื่อนอีกคนนึงเมื่อเดือนสิงหาคม พ.ศ. 2564 ผมรับหน้าที่ในการพัฒนาเว็บแอพฯ ในมุมมองของ desktop และมือถือ และหน้าที่ของผมอีกอย่างคือต้องพัฒนาทั้งหน้าบ้านและหลังบ้าน รวมถึงดูแลเรื่องระบบความปลอดภัยของระบบด้วย ผมใช้ ReactJs เป็นเฟรมเวิร์คในการพัฒนาหน้าบ้าน และใช้ Express ที่เขียนด้วย NodeJs ในการพัฒนา RestAPI สำหรับหลังบ้าน ผมพัฒนาหน้าบ้านและหลังบ้าน รวมถึงทดสอบระบบไปพร้อม ๆ กัน ผมตั้งใจทำงานนี้อย่างมาก และทำงานหนักยาวนานติดต่อกัน 5 เดือน เพื่อให้งานออกมาสมบูรณ์แบบ และสุดท้าย โปรเจ็คนี้ก็ถูกนำขึ้นสู่โลกอินเตอร์เน็ต เพื่อช่วยให้นักเรียนที่จังหวัดตราดและคุณครูได้ประสบผลสำเร็จในเรื่องของการเรียน และการสอนได้ง่ายขึ้น"
             }
-        },
+        ],
         "contact" : {
             "phone" : "+66 90-043-3337",
             "Email" : "hoklok3@gmail.com",

@@ -17,6 +17,8 @@ Aos.init({ duration: 2000 })
 const projectImgList = [project, project1, figmaProject1, figmaProject2, figmaProject3, figmaProject4]
 const bitkubImgList = [bitkub]
 
+const pageImageList = [bitkubImgList, projectImgList]
+
 export default function MobileExperience() {
     const { lang } = react.useContext(langContext);
     const [text, setText] = react.useState(textDate.Eng);
@@ -35,30 +37,20 @@ export default function MobileExperience() {
         <div className='p-16 h-auto'>
             <p className='text-4xl pb-4 font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-200'>{lang === 0 ? 'EXPERIENCES' : 'ประสบการณ์'}</p>
             <br />
-            <div data-aos='fade-up' className='h-full m-auto mb-10'>
-                <CustomGallery images={bitkubImgList} openModal={(img) => {
-                    setSelectImg(img)
-                    setSelectImgList(bitkubImgList)
-                }} />
-                <div className='mt-4 h-40 md:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
-                    <div className='pt-6 pl-6 pb-2 sticky'>
-                        <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.bitkub.date}</p>
+            {pageImageList.map((value, index) => (
+                <div key={`m-experiences-${index}`} data-aos='fade-up' className='h-full m-auto mb-10'>
+                    <CustomGallery images={value} openModal={(img) => {
+                        setSelectImg(img)
+                        setSelectImgList(value)
+                    }} />
+                    <div className='mt-4 h-40 md:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
+                        <div className='pt-6 pl-6 pb-2 sticky'>
+                            <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences[index].date}</p>
+                        </div>
+                        <p className='pl-6 pr-6 pb-6 md:text-md sm:text-sm font-sans text-zinc-800'>{text.experiences[index].detail}</p>
                     </div>
-                    <p className='pl-6 pr-6 pb-6 md:text-md sm:text-sm font-sans text-zinc-800'>{text.experiences.bitkub.detail}</p>
                 </div>
-            </div>
-            <div data-aos='fade-up' className='h-full m-2 mb-6'>
-                <CustomGallery images={projectImgList} openModal={(img) => {
-                    setSelectImg(img)
-                    setSelectImgList(projectImgList)
-                }} />
-                <div className='mt-4 h-40 md:w-80 overflow-scroll overflow-x-hidden rounded-2xl bg-slate-50'>
-                    <div className='pt-6 pl-6 pb-2 sticky'>
-                        <p className='md:text-lg sm:text-md font-bold text-zinc-500'>{text.experiences.fianlProject.date}</p>
-                    </div>
-                    <p className='pl-6 pr-6 pb-6 md:text-md sm:text-sm font-sans text-zinc-800'>{text.experiences.fianlProject.detail}</p>
-                </div>
-            </div>
+            ))}
             <CustomModal open={selectImg !== null} close={() => setSelectImg(null)} img={selectImg} images={selectImgList} />
         </div>
     );
