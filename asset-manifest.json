@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.52620ea8.css",
-    "main.js": "/portfolio/static/js/main.7caca9f3.js",
+    "main.css": "/portfolio/static/css/main.1708169b.css",
+    "main.js": "/portfolio/static/js/main.bf531449.js",
     "static/js/787.9b9c0edf.chunk.js": "/portfolio/static/js/787.9b9c0edf.chunk.js",
     "static/media/project1.png": "/portfolio/static/media/project1.a940896cad9f062952e4.png",
     "static/media/figmaProject2.png": "/portfolio/static/media/figmaProject2.bbcd7722fa2c91a9e074.png",
@@ -17,12 +17,12 @@
     "static/media/kisspng-node-js-javascript-web-application-express-js-comp-5ae0f84e5e7537.png": "/portfolio/static/media/kisspng-node-js-javascript-web-application-express-js-comp-5ae0f84e5e7537.0464945815246930703869.e71346fe0fec16ec5f6e.png",
     "static/media/kisspng-socket-io-websocket-node-js-javascript-library-5af655a0b6e393.png": "/portfolio/static/media/kisspng-socket-io-websocket-node-js-javascript-library-5af655a0b6e393.8323079215260932167491.378883c047d5f653b3bf.png",
     "index.html": "/portfolio/index.html",
-    "main.52620ea8.css.map": "/portfolio/static/css/main.52620ea8.css.map",
-    "main.7caca9f3.js.map": "/portfolio/static/js/main.7caca9f3.js.map",
+    "main.1708169b.css.map": "/portfolio/static/css/main.1708169b.css.map",
+    "main.bf531449.js.map": "/portfolio/static/js/main.bf531449.js.map",
     "787.9b9c0edf.chunk.js.map": "/portfolio/static/js/787.9b9c0edf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.52620ea8.css",
-    "static/js/main.7caca9f3.js"
+    "static/css/main.1708169b.css",
+    "static/js/main.bf531449.js"
   ]
 }
