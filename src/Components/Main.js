@@ -48,8 +48,8 @@ export default function Main(){
                             {text.display.ToolsExperience.map((value, index) => {
                                 return(
                                     <Grid item key={`itemNo${index}`}>
-                                        <span className='px-4 py-2 rounded-full bg-gray-100 font-semibold text-sm flex align-center w-max cursor-default hover:bg-gray-200 transition duration-300 ease'>
-                                            <p className={`text-transparent bg-clip-text bg-gradient-to-r ${fromcolors[index]} ${tocolors[index]}`}>
+                                        <span className={`rounded-full bg-gray-100 text-sm flex align-center w-max cursor-default hover:bg-gradient-to-r ${fromcolors[index]} ${tocolors[index]} transition duration-300 ease-in-out`}>
+                                            <p className={`px-4 py-2 hover:text-white font-semibold text-transparent bg-clip-text bg-gradient-to-r ${fromcolors[index]} ${tocolors[index]} transition duration-300 ease-in-out`}>
                                                 {`${Object.keys(value)} (${Object.values(value)})`}
                                             </p>
                                         </span>

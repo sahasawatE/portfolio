@@ -7,7 +7,7 @@
             "fullName" : "Mr. Sahasawat Eungwanitchaphan",
             "displayEducation" : "B.Sc., Computer Science",
             "displayGpax" : "Cumulative 2.42 GPAX",
-            "ToolsExperience" : [{"mySql" : "3 Years"},{"ReactJS" : "3 Years"},{"Express NodeJS" : "2 Years"},{"Postman" : "2 Years"},{"Figma" : "2 Years"},{"Git" : "1 Years"},{"Postman Test Script" : "6 Months"},{"React Native" : "3 Months"},{"TailwindCSS" : "1 Month"},{"Socket.IO": "1 Month"}]
+            "ToolsExperience" : [{"mySql" : "3 Years"},{"ReactJS" : "3 Years"},{"Express NodeJS" : "2 Years"},{"Postman" : "2 Years"},{"Figma" : "2 Years"},{"Git" : "1 Years"},{"Postman Test Script" : "3 Months"},{"React Native" : "3 Months"},{"TailwindCSS" : "1 Month"},{"Socket.IO": "1 Month"}]
         },
         "activities" : [
             {
@@ -31,6 +31,11 @@
                 "name" : "fianlProject",
                 "date" : "August 2021 - December 2021",
                 "detail" : "I have started working on a senior project with my friend in August 2021. I have undertaken to develop a web application on desktop view and mobile view. In this project, I have used ReactJs as a framework and created Rest API using Express in NodeJs. For those components that I have used, I decided to use Material UI and React Bootstrap. I have developed both frontend and backend at the same time and tested the product while developing. I have worked so hard for 5 months. And finally, this project is launched on the internet for helping students and teachers at Trat to achieve their task of studying or teaching easier."
+            },
+            {
+                "name" : "MohPrompt Station",
+                "date" : "March 2022 - June 2022",
+                "detail" : "I started working with my friends at a software house company named Abbot which created an application called Moh Prompt that verifies vaccinated people for Covid-19. I worked as a software developer who created Moh Prompt Station, a web application for Prescriptions, Appointments,  and Covid-19 Labs. The Moh Prompt Station project is developed by the framework called NEXT.JS through the React.JS framework and this project is the first project that I created with the React class base.  I also learned a new computer language called Dart which is used for the framework named Flutter."
             }
         ],
         "contact" : {
@@ -48,7 +53,7 @@
             "fullName" : "นาย สหสวรรษ อึ้งวณิชย์พันธ์",
             "displayEducation" : "ปริญญาตรี ภาควิชาคณิตศาสตร์และวิทยาการคอมพิวเตอร์",
             "displayGpax" : "เกรดเฉลี่ย 2.42",
-            "ToolsExperience" : [{"mySql" : "3 ปี"},{"ReactJS" : "3 ปี"},{"Express NodeJS" : "2 ปี"},{"Postman" : "2 ปี"},{"Figma" : "2 ปี"},{"Git" : "1 ปี"},{"Postman Test Script" : "6 เดือน"},{"React Native" : "3 เดือน"},{"TailwindCSS" : "1 เดือน"},{"Socket.IO": "1 เดือน"}]
+            "ToolsExperience" : [{"mySql" : "3 ปี"},{"ReactJS" : "3 ปี"},{"Express NodeJS" : "2 ปี"},{"Postman" : "2 ปี"},{"Figma" : "2 ปี"},{"Git" : "1 ปี"},{"Postman Test Script" : "3 เดือน"},{"React Native" : "3 เดือน"},{"TailwindCSS" : "1 เดือน"},{"Socket.IO": "1 เดือน"}]
         },
         "activities" : [
             {
@@ -72,6 +77,11 @@
                 "name" : "fianlProject",
                 "date" : "สิงหาคม 2564 - ธันวาคม 2564",
                 "detail" : "ผมได้เริ่มทำโปรเจ็คจบกับเพื่อนอีกคนนึงเมื่อเดือนสิงหาคม พ.ศ. 2564 ผมรับหน้าที่ในการพัฒนาเว็บแอพฯ ในมุมมองของ desktop และมือถือ และหน้าที่ของผมอีกอย่างคือต้องพัฒนาทั้งหน้าบ้านและหลังบ้าน รวมถึงดูแลเรื่องระบบความปลอดภัยของระบบด้วย ผมใช้ ReactJs เป็นเฟรมเวิร์คในการพัฒนาหน้าบ้าน และใช้ Express ที่เขียนด้วย NodeJs ในการพัฒนา RestAPI สำหรับหลังบ้าน ผมพัฒนาหน้าบ้านและหลังบ้าน รวมถึงทดสอบระบบไปพร้อม ๆ กัน ผมตั้งใจทำงานนี้อย่างมาก และทำงานหนักยาวนานติดต่อกัน 5 เดือน เพื่อให้งานออกมาสมบูรณ์แบบ และสุดท้าย โปรเจ็คนี้ก็ถูกนำขึ้นสู่โลกอินเตอร์เน็ต เพื่อช่วยให้นักเรียนที่จังหวัดตราดและคุณครูได้ประสบผลสำเร็จในเรื่องของการเรียน และการสอนได้ง่ายขึ้น"
+            },
+            {
+                "name" : "หมอพร้อม Station",
+                "date" : "มีนาคม 2565 - มิถุนายน 2565",
+                "detail" : "ผมไปร่วมทำงานกับทีม Abbot ซึ่งเป็นทีมที่ทำแอพ หมอพร้อม ให้เราได้ใช้ในการยืนยันวัคซีน และการออกใบรับรองวัคซีนโควิด 19 ผมเข้าไปทำในตำแหน่ง Developer ซึ่งรับผิดชอบ project ที่มีชื่อว่า หมอพร้อม station เป็นเว็บที่พัฒนาด้วย NEXT.JS     ผ่าน React framework ซึ่งก็เป็นครั้งแรกที่ผมได้เขียน React ด้วย class ตลอด 4 เดือนที่ผ่านมา ผมได้ฝากผลงานไว้หลายห้นาด้วยกัน เช่น หน้าการจองผลแลป หน้าร้านยา หรือ ระบบยา และระบบข้อมูลการรักษา และยังได้เขียน component ย่อยไว้อีกมากมาย ด้วยภาวะโรคระบาด ทำให้ผมไม่สามารถไปทำงานที่ออฟฟิศได้ทุกวัน ผมจึงต้องทำงานที่ห้องพัก 3 วัน และไปทำงานที่ออฟฟิศอีก 2 วัน นอกจากนี้ ระหว่างการทำงาน ผมก็ได้เรียนรู้ภาษาใหม่ ๆ อีกด้วย เช่น ภาษา Dart ที่เอาไว้พัฒนาแอพฯ ด้วย framework ที่มีชื่อว่า Flutter แต่เนื่องจากงานหมอพร้อม station มีมากเกินไป ผมจึงไม่ได้ทำ หมอพร้อม version 2 ซึ่งเป็นเรื่องที่น่าเสียดายมาก"
             }
         ],
         "contact" : {

@@ -38,10 +38,10 @@ module.exports = {
         },
         slide: {
           'from' : {
-            'transform': 'translateX(100%)'
+            'transform': 'translateX(0)'
           },
           'to' : {
-            'transform': 'translateX(-600%)'
+            'transform': 'translateX(-200%)'
           },
         },
       },
