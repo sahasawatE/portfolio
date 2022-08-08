@@ -1,94 +1,116 @@
 {
-    "Eng" : {
-        "displayName" : "Sahasawat",
-        "displaySurName" : "Eungwanitchaphan",
-        "university" : "Chulalongkorn University",
-        "display" : {
-            "fullName" : "Mr. Sahasawat Eungwanitchaphan",
-            "displayEducation" : "B.Sc., Computer Science",
-            "displayGpax" : "Cumulative 2.42 GPAX",
-            "ToolsExperience" : [{"mySql" : "3 Years"},{"ReactJS" : "3 Years"},{"Express NodeJS" : "2 Years"},{"Postman" : "2 Years"},{"Figma" : "2 Years"},{"Git" : "1 Years"},{"Postman Test Script" : "3 Months"},{"React Native" : "3 Months"},{"TailwindCSS" : "1 Month"},{"Socket.IO": "1 Month"}]
-        },
-        "activities" : [
-            {
-                "name" : "bdms",
-                "date" : "February 2021",
-                "detail" : "I have joined a data science team on 23 - 24th February as a co-data analyzer. There are so many teams that send their project or idea to BDMS Hospital. Then, my team and the other 19 teams can pass a qualifying round. And then, BDMS Hospital has immediately stopped the Hackathon contest. With our brilliance, I think my team can win a final round and get reward"
-            },
-            {
-                "name" : "angalung",
-                "date" : "April 2021",
-                "detail" : "In April 2021, I have enrolled on a UX/UI class and my teacher are gives work that he has to me and my friends. I and 5 others formed a team for the work. That work is designing an application for Angalung for old people in a nursing house. We decided to use Figma as a design tool."
-            }
-        ],
-        "experiences" : [
-            {
-                "name" : "bitkub ",
-                "date" : "14 June 2021 - 6 August 2021",
-                "detail" : "On 14th June 2021, I have started interning at the biggest blockchain technology company in Thailand named BitKub as a UX/UI and Graphic designer. I Have done some projects that on launched now such as Bitkub Chain, and Bitkub NFT Game. I have learned a lot there, so much skill I have been earned. Some of those skills are using Figma, and the most important thing is I have learned a process of working in a start-up company such as the agile process or scum process."
-            },
-            {
-                "name" : "fianlProject",
-                "date" : "August 2021 - December 2021",
-                "detail" : "I have started working on a senior project with my friend in August 2021. I have undertaken to develop a web application on desktop view and mobile view. In this project, I have used ReactJs as a framework and created Rest API using Express in NodeJs. For those components that I have used, I decided to use Material UI and React Bootstrap. I have developed both frontend and backend at the same time and tested the product while developing. I have worked so hard for 5 months. And finally, this project is launched on the internet for helping students and teachers at Trat to achieve their task of studying or teaching easier."
-            },
-            {
-                "name" : "MohPrompt Station",
-                "date" : "March 2022 - June 2022",
-                "detail" : "I started working with my friends at a software house company named Abbot which created an application called Moh Prompt that verifies vaccinated people for Covid-19. I worked as a software developer who created Moh Prompt Station, a web application for Prescriptions, Appointments,  and Covid-19 Labs. The Moh Prompt Station project is developed by the framework called NEXT.JS through the React.JS framework and this project is the first project that I created with the React class base.  I also learned a new computer language called Dart which is used for the framework named Flutter."
-            }
-        ],
-        "contact" : {
-            "phone" : "+66 90-043-3337",
-            "Email" : "hoklok3@gmail.com",
-            "github" : "https://github.com/sahasawatE",
-            "address" : "38/203 Noble Revolve Ratchada 1, Ratchadaphisek Rd., Huai Khwang sub-district, Huai Khwang district, Bangkok 10310"
-        }
+  "Eng": {
+    "displayName": "Sahasawat",
+    "displaySurName": "Eungwanitchaphan",
+    "university": "Chulalongkorn University",
+    "display": {
+      "fullName": "Mr. Sahasawat Eungwanitchaphan",
+      "displayEducation": "B.Sc., Computer Science",
+      "displayGpax": "Cumulative 2.42 GPAX",
+      "ToolsExperience": [
+        { "mySql": "3 Years" },
+        { "ReactJS": "3 Years" },
+        { "Express NodeJS": "2 Years" },
+        { "Postman": "2 Years" },
+        { "Figma": "2 Years" },
+        { "Git": "1 Years" },
+        { "Postman Test Script": "3 Months" },
+        { "React Native": "3 Months" },
+        { "TailwindCSS": "1 Month" },
+        { "Socket.IO": "1 Month" }
+      ]
     },
-    "Thai" : {
-        "displayName" : "สหสวรรษ",
-        "displaySurName" : "อึ้งวณิชย์พันธ์",
-        "university" : "จุฬาลงกรณ์มหาวิทยาลัย",
-        "display" : {
-            "fullName" : "นาย สหสวรรษ อึ้งวณิชย์พันธ์",
-            "displayEducation" : "ปริญญาตรี ภาควิชาคณิตศาสตร์และวิทยาการคอมพิวเตอร์",
-            "displayGpax" : "เกรดเฉลี่ย 2.42",
-            "ToolsExperience" : [{"mySql" : "3 ปี"},{"ReactJS" : "3 ปี"},{"Express NodeJS" : "2 ปี"},{"Postman" : "2 ปี"},{"Figma" : "2 ปี"},{"Git" : "1 ปี"},{"Postman Test Script" : "3 เดือน"},{"React Native" : "3 เดือน"},{"TailwindCSS" : "1 เดือน"},{"Socket.IO": "1 เดือน"}]
-        },
-        "activities" : [
-            {
-                "name" : "bdms",
-                "date" : "กุมภาพันธ์ 2564",
-                "detail" : "เมื่อวันที่ 23 - 24 กุมภาพันธ์ ผมได้มีโอกาสได้เข้าร่วมทีมในการแข่งขัน Hackathon ในฐานะผู้ช่วยนักวิเคราะห์ข้อมูล มีหลายทีมที่เข้าร่วมกิจกรรมนี้ แต่มีเพียง 20 ทีมเท่านั้นที่ผ่านรอบคัดเลือกมาได้และทีมผมก็เป็นหนึ่งในนั้น แต่แล้ว จู่ ๆ ทางผู้จัดก็ได้จบการแข่งขันลง ในความคิดเห็นของผม ผมคิดว่าทีมของผมสามารถชนะการแข่งขันรายการนี้ได้ ถ้าหากทางผู้จัดไม่ยกเลิกการแข่งขันเสียก่อน"
-            },
-            {
-                "name" : "angalung",
-                "date" : "เมษายน 2564",
-                "detail" : "ในเดือนเมษายน ปี 2564 ผมได้มีโอกาสในการลงเรียนวิชา UX/UI ครูของผมได้ให้งานนึง ซึ่งก็คือออกแบบหน้าตาของแอพฯ สำหรับควบคุมและจัดการการเล่นอังกะลุงสำหรับบ้านพักคนชรา ผมได้จับกลุ่มกับเพื่อนอีก 5 คนเพื่อออกแบบแอพฯ นี้ในการออกแบบ กลุ่มของผมได้ตัดสินใจที่จะใช้ Figma เป็นเครื่องมือสำหรับออกแบบ"
-            }
-        ],
-        "experiences" : [
-            {
-                "name" : "bitkub",
-                "date" : "14 มิถุนายน 2564 - 6 สิงหาคม 2564",
-                "detail" : "เมื่อสันที่ 14 มิถุนายน พ.ศ. 2564 ผมได้เริ่มทำงานที่บริษัทที่เกี่ยวกับเทคโนโลยี Blockchain ที่ใหญ่ที่สุดในประเทศไทยที่ชื่อ BitKub ในตำแหน่ง นักออหแบบ UX/UI และ Graphic ผมได้ทำหลายงานด้วยกัน เช่น โปรเจ็ค BitKub Chain และ BitKub NTF Game ผมได้เรียนรู้หลายในตอนที่ฝึกงาน เช่น ทักษะในการใช้งาน Figma และที่สำคัญมากอย่างนึงที่ผมได้เรียนรู้คือ กระบวนการทำงานในบริษัท start-up เช่น Agile Process หรือ Scum process"
-            },
-            {
-                "name" : "fianlProject",
-                "date" : "สิงหาคม 2564 - ธันวาคม 2564",
-                "detail" : "ผมได้เริ่มทำโปรเจ็คจบกับเพื่อนอีกคนนึงเมื่อเดือนสิงหาคม พ.ศ. 2564 ผมรับหน้าที่ในการพัฒนาเว็บแอพฯ ในมุมมองของ desktop และมือถือ และหน้าที่ของผมอีกอย่างคือต้องพัฒนาทั้งหน้าบ้านและหลังบ้าน รวมถึงดูแลเรื่องระบบความปลอดภัยของระบบด้วย ผมใช้ ReactJs เป็นเฟรมเวิร์คในการพัฒนาหน้าบ้าน และใช้ Express ที่เขียนด้วย NodeJs ในการพัฒนา RestAPI สำหรับหลังบ้าน ผมพัฒนาหน้าบ้านและหลังบ้าน รวมถึงทดสอบระบบไปพร้อม ๆ กัน ผมตั้งใจทำงานนี้อย่างมาก และทำงานหนักยาวนานติดต่อกัน 5 เดือน เพื่อให้งานออกมาสมบูรณ์แบบ และสุดท้าย โปรเจ็คนี้ก็ถูกนำขึ้นสู่โลกอินเตอร์เน็ต เพื่อช่วยให้นักเรียนที่จังหวัดตราดและคุณครูได้ประสบผลสำเร็จในเรื่องของการเรียน และการสอนได้ง่ายขึ้น"
-            },
-            {
-                "name" : "หมอพร้อม Station",
-                "date" : "มีนาคม 2565 - มิถุนายน 2565",
-                "detail" : "ผมไปร่วมทำงานกับทีม Abbot ซึ่งเป็นทีมที่ทำแอพ หมอพร้อม ให้เราได้ใช้ในการยืนยันวัคซีน และการออกใบรับรองวัคซีนโควิด 19 ผมเข้าไปทำในตำแหน่ง Developer ซึ่งรับผิดชอบ project ที่มีชื่อว่า หมอพร้อม station เป็นเว็บที่พัฒนาด้วย NEXT.JS     ผ่าน React framework ซึ่งก็เป็นครั้งแรกที่ผมได้เขียน React ด้วย class ตลอด 4 เดือนที่ผ่านมา ผมได้ฝากผลงานไว้หลายห้นาด้วยกัน เช่น หน้าการจองผลแลป หน้าร้านยา หรือ ระบบยา และระบบข้อมูลการรักษา และยังได้เขียน component ย่อยไว้อีกมากมาย ด้วยภาวะโรคระบาด ทำให้ผมไม่สามารถไปทำงานที่ออฟฟิศได้ทุกวัน ผมจึงต้องทำงานที่ห้องพัก 3 วัน และไปทำงานที่ออฟฟิศอีก 2 วัน นอกจากนี้ ระหว่างการทำงาน ผมก็ได้เรียนรู้ภาษาใหม่ ๆ อีกด้วย เช่น ภาษา Dart ที่เอาไว้พัฒนาแอพฯ ด้วย framework ที่มีชื่อว่า Flutter แต่เนื่องจากงานหมอพร้อม station มีมากเกินไป ผมจึงไม่ได้ทำ หมอพร้อม version 2 ซึ่งเป็นเรื่องที่น่าเสียดายมาก"
-            }
-        ],
-        "contact" : {
-            "phone" : "+66 90-043-3337",
-            "Email" : "hoklok3@gmail.com",
-            "github" : "https://github.com/sahasawatE",
-            "address" : "38/203 โนเบิล รีวอลฟ์ รัชดา 1 ซอยรัชดาภิเษก6 แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310"
-        }
+    "activities": [
+      {
+        "name": "bdms",
+        "date": "February 2021",
+        "detail": "I joined a data science team on February 23rd and 24th as a co-data analyzer. There are so many teams that send their projects or ideas to BDMS Hospital. Then my team and the other 19 teams can pass a qualifying round. And then, BDMS Hospital immediately stopped the hackathon contest. With our brilliance, I think my team can win the final round and get a reward."
+      },
+      {
+        "name": "angalung",
+        "date": "April 2021",
+        "detail": "In April 2021, I enrolled in a UX/UI class and my teacher is giving the work that he has to me and my friends. I and five others formed a team for the work. That work is designing an application for Angalung for old people in a nursing home. We decided to use Figma as a design tool."
+      }
+    ],
+    "experiences": [
+      {
+        "name": "bitkub ",
+        "date": "14 June 2021 - 6 August 2021",
+        "detail": "On June 14th, 2021, I started interning at the biggest blockchain technology company in Thailand, BitKub, as a UX/UI and graphic designer. I have done some projects that have launched now, such as Bitkub Chain and Bitkub NFT Game. I have learned a lot there; so many skills have been earned. Some of those skills are using Figma, and the most important thing is that I have learned the process of working in a start-up company, such as the agile process or scum process."
+      },
+      {
+        "name": "fianlProject",
+        "date": "August 2021 - December 2021",
+        "detail": "I started working on a senior project with my friend in August 2021. I have undertaken to develop a web application for desktop and mobile view. In this project, I have used React.Js as a framework and created a Rest API using Express in NodeJs. For those components that I have used, I decided to use Material UI and React Bootstrap. I developed both the Frontend and Backend at the same time and tested the product while developing. I have worked so hard for 5 months. And finally, this project has been launched on the internet to help students and teachers at Trat achieve their task of studying or teaching more easily."
+      },
+      {
+        "name": "MohPrompt Station",
+        "date": "March 2022 - June 2022",
+        "detail": "I started working with my friends at a software house company named Abbot, which created an application called Moh Prompt that verifies vaccinated people for COVID-19. I worked as a software developer who created Moh Prompt Station, a web application for prescriptions, appointments, and COVID-19 Labs. The Moh Prompt Station project is developed by the framework called NEXT.JS through the React.JS framework, and this project is the first project that I created with the React class base. I also learned a new computer language called Dart, which is used for the framework named Flutter."
+      }
+    ],
+    "contact": {
+      "phone": "+66 90-043-3337",
+      "Email": "hoklok3@gmail.com",
+      "github": "https://github.com/sahasawatE",
+      "address": "38/203 Noble Revolve Ratchada 1, Ratchadaphisek Rd., Huai Khwang sub-district, Huai Khwang district, Bangkok 10310"
     }
+  },
+  "Thai": {
+    "displayName": "สหสวรรษ",
+    "displaySurName": "อึ้งวณิชย์พันธ์",
+    "university": "จุฬาลงกรณ์มหาวิทยาลัย",
+    "display": {
+      "fullName": "นาย สหสวรรษ อึ้งวณิชย์พันธ์",
+      "displayEducation": "ปริญญาตรี ภาควิชาคณิตศาสตร์และวิทยาการคอมพิวเตอร์",
+      "displayGpax": "เกรดเฉลี่ย 2.42",
+      "ToolsExperience": [
+        { "mySql": "3 ปี" },
+        { "ReactJS": "3 ปี" },
+        { "Express NodeJS": "2 ปี" },
+        { "Postman": "2 ปี" },
+        { "Figma": "2 ปี" },
+        { "Git": "1 ปี" },
+        { "Postman Test Script": "3 เดือน" },
+        { "React Native": "3 เดือน" },
+        { "TailwindCSS": "1 เดือน" },
+        { "Socket.IO": "1 เดือน" }
+      ]
+    },
+    "activities": [
+      {
+        "name": "bdms",
+        "date": "กุมภาพันธ์ 2564",
+        "detail": "เมื่อวันที่ 23 - 24 กุมภาพันธ์ ผมได้มีโอกาสได้เข้าร่วมทีมในการแข่งขัน Hackathon ในฐานะผู้ช่วยนักวิเคราะห์ข้อมูล มีหลายทีมที่เข้าร่วมกิจกรรมนี้ แต่มีเพียง 20 ทีมเท่านั้นที่ผ่านรอบคัดเลือกมาได้และทีมผมก็เป็นหนึ่งในนั้น แต่แล้ว จู่ ๆ ทางผู้จัดก็ได้จบการแข่งขันลง ในความคิดเห็นของผม ผมคิดว่าทีมของผมสามารถชนะการแข่งขันรายการนี้ได้ ถ้าหากทางผู้จัดไม่ยกเลิกการแข่งขันเสียก่อน"
+      },
+      {
+        "name": "angalung",
+        "date": "เมษายน 2564",
+        "detail": "ในเดือนเมษายน ปี 2564 ผมได้มีโอกาสในการลงเรียนวิชา UX/UI ครูของผมได้ให้งานนึง ซึ่งก็คือออกแบบหน้าตาของแอพฯ สำหรับควบคุมและจัดการการเล่นอังกะลุงสำหรับบ้านพักคนชรา ผมได้จับกลุ่มกับเพื่อนอีก 5 คนเพื่อออกแบบแอพฯ นี้ในการออกแบบ กลุ่มของผมได้ตัดสินใจที่จะใช้ Figma เป็นเครื่องมือสำหรับออกแบบ"
+      }
+    ],
+    "experiences": [
+      {
+        "name": "bitkub",
+        "date": "14 มิถุนายน 2564 - 6 สิงหาคม 2564",
+        "detail": "เมื่อสันที่ 14 มิถุนายน พ.ศ. 2564 ผมได้เริ่มทำงานที่บริษัทที่เกี่ยวกับเทคโนโลยี Blockchain ที่ใหญ่ที่สุดในประเทศไทยที่ชื่อ BitKub ในตำแหน่ง นักออหแบบ UX/UI และ Graphic ผมได้ทำหลายงานด้วยกัน เช่น โปรเจ็ค BitKub Chain และ BitKub NTF Game ผมได้เรียนรู้หลายในตอนที่ฝึกงาน เช่น ทักษะในการใช้งาน Figma และที่สำคัญมากอย่างนึงที่ผมได้เรียนรู้คือ กระบวนการทำงานในบริษัท start-up เช่น Agile Process หรือ Scum process"
+      },
+      {
+        "name": "fianlProject",
+        "date": "สิงหาคม 2564 - ธันวาคม 2564",
+        "detail": "ผมได้เริ่มทำโปรเจ็คจบกับเพื่อนอีกคนนึงเมื่อเดือนสิงหาคม พ.ศ. 2564 ผมรับหน้าที่ในการพัฒนาเว็บแอพฯ ในมุมมองของ desktop และมือถือ และหน้าที่ของผมอีกอย่างคือต้องพัฒนาทั้งหน้าบ้านและหลังบ้าน รวมถึงดูแลเรื่องระบบความปลอดภัยของระบบด้วย ผมใช้ ReactJs เป็นเฟรมเวิร์คในการพัฒนาหน้าบ้าน และใช้ Express ที่เขียนด้วย NodeJs ในการพัฒนา RestAPI สำหรับหลังบ้าน ผมพัฒนาหน้าบ้านและหลังบ้าน รวมถึงทดสอบระบบไปพร้อม ๆ กัน ผมตั้งใจทำงานนี้อย่างมาก และทำงานหนักยาวนานติดต่อกัน 5 เดือน เพื่อให้งานออกมาสมบูรณ์แบบ และสุดท้าย โปรเจ็คนี้ก็ถูกนำขึ้นสู่โลกอินเตอร์เน็ต เพื่อช่วยให้นักเรียนที่จังหวัดตราดและคุณครูได้ประสบผลสำเร็จในเรื่องของการเรียน และการสอนได้ง่ายขึ้น"
+      },
+      {
+        "name": "หมอพร้อม Station",
+        "date": "มีนาคม 2565 - มิถุนายน 2565",
+        "detail": "ผมไปร่วมทำงานกับทีม Abbot ซึ่งเป็นทีมที่ทำแอพ หมอพร้อม ให้เราได้ใช้ในการยืนยันวัคซีน และการออกใบรับรองวัคซีนโควิด 19 ผมเข้าไปทำในตำแหน่ง Developer ซึ่งรับผิดชอบ project ที่มีชื่อว่า หมอพร้อม station เป็นเว็บที่พัฒนาด้วย NEXT.JS     ผ่าน React framework ซึ่งก็เป็นครั้งแรกที่ผมได้เขียน React ด้วย class ตลอด 4 เดือนที่ผ่านมา ผมได้ฝากผลงานไว้หลายห้นาด้วยกัน เช่น หน้าการจองผลแลป หน้าร้านยา หรือ ระบบยา และระบบข้อมูลการรักษา และยังได้เขียน component ย่อยไว้อีกมากมาย ด้วยภาวะโรคระบาด ทำให้ผมไม่สามารถไปทำงานที่ออฟฟิศได้ทุกวัน ผมจึงต้องทำงานที่ห้องพัก 3 วัน และไปทำงานที่ออฟฟิศอีก 2 วัน นอกจากนี้ ระหว่างการทำงาน ผมก็ได้เรียนรู้ภาษาใหม่ ๆ อีกด้วย เช่น ภาษา Dart ที่เอาไว้พัฒนาแอพฯ ด้วย framework ที่มีชื่อว่า Flutter แต่เนื่องจากงานหมอพร้อม station มีมากเกินไป ผมจึงไม่ได้ทำ หมอพร้อม version 2 ซึ่งเป็นเรื่องที่น่าเสียดายมาก"
+      }
+    ],
+    "contact": {
+      "phone": "+66 90-043-3337",
+      "Email": "hoklok3@gmail.com",
+      "github": "https://github.com/sahasawatE",
+      "address": "38/203 โนเบิล รีวอลฟ์ รัชดา 1 ซอยรัชดาภิเษก6 แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310"
+    }
+  }
 }
