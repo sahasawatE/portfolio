@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLenis } from "lenis/react";
+import { publicUrl } from "@/lib/assets";
 
 type GalleryProps = {
   images: string[];
@@ -11,6 +12,7 @@ type GalleryProps = {
 
 export function Gallery({ images, alt, through }: GalleryProps) {
   const [open, setOpen] = useState<number | null>(null);
+  const srcs = images.map(publicUrl);
   const lenis = useLenis();
 
   useEffect(() => {
@@ -46,7 +48,7 @@ export function Gallery({ images, alt, through }: GalleryProps) {
             : "snap-x snap-mandatory"
         } ${through === "right" ? "md:[direction:rtl]" : ""}`}
       >
-        {images.map((src, index) => (
+        {srcs.map((src, index) => (
           <li key={src} className="snap-start shrink-0" dir="ltr">
             <motion.button
               type="button"
@@ -86,7 +88,7 @@ export function Gallery({ images, alt, through }: GalleryProps) {
                 onClick={(event) => event.stopPropagation()}
               >
                 <img
-                  src={images[open]}
+                  src={srcs[open]}
                   alt={`${alt} ${open + 1}`}
                   className="max-h-[78vh] w-full rounded-ios object-contain shadow-[0_12px_40px_rgba(0,0,0,0.28)]"
                 />

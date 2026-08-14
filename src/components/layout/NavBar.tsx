@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { GlassSurface } from "@/components/ui/GlassSurface";
 import { Icon } from "@/components/ui/Icon";
+import { publicUrl } from "@/lib/assets";
 import { downloadMarkdown } from "@/lib/exportMd";
 import type { Resume } from "@/types/resume";
 
@@ -31,7 +32,7 @@ export function NavBar({ resume }: NavBarProps) {
           </a>
           <div className="flex items-center gap-2">
             <motion.a
-              href="/resume.pdf"
+              href={publicUrl("/resume.pdf")}
               download
               className={pill}
               whileHover={{ scale: 1.05 }}

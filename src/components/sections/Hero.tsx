@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Icon } from "@/components/ui/Icon";
+import { publicUrl } from "@/lib/assets";
 import { getContactItems } from "@/lib/contacts";
 import type { EducationItem, Resume } from "@/types/resume";
 
@@ -16,7 +17,7 @@ const rise = {
 
 export function Hero({ basics, education }: HeroProps) {
   const [photoFailed, setPhotoFailed] = useState(false);
-  const photoSrc = basics.photo || "";
+  const photoSrc = basics.photo ? publicUrl(basics.photo) : "";
   const showPhoto = Boolean(photoSrc) && !photoFailed;
   const contacts = getContactItems(basics);
 
