@@ -22,9 +22,6 @@
   --print-accent: #1f2937;
   --glass-border: color-mix(in srgb, #ffffff 70%, var(--label) 12%);
   --glass-highlight: color-mix(in srgb, #ffffff 78%, transparent);
-  --orb-1: color-mix(in srgb, var(--blue) 30%, transparent);
-  --orb-2: color-mix(in srgb, #af52de 20%, transparent);
-  --orb-3: color-mix(in srgb, #64d2ff 16%, transparent);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -138,14 +135,40 @@ body {
     radial-gradient(ellipse 50% 30% at 30% 35%, rgba(255, 255, 255, 0.35), transparent 70%),
     radial-gradient(ellipse 45% 28% at 70% 45%, rgba(255, 255, 255, 0.28), transparent 70%),
     radial-gradient(ellipse 40% 24% at 50% 70%, rgba(255, 255, 255, 0.2), transparent 70%);
-  filter: blur(28px);
   animation: weather-haze-drift 28s ease-in-out infinite alternate;
 }
 
 .weather-haze.is-fog {
   opacity: 0.85;
-  filter: blur(40px);
   animation-duration: 40s;
+}
+
+.weather-clouds {
+  position: absolute;
+  inset: 0;
+}
+
+.weather-cloud {
+  position: absolute;
+  width: min(72vw, 36rem);
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: screen;
+  transform: scale(calc(var(--scale, 1) * var(--flip, 1)), var(--scale, 1));
+  animation-name: weather-cloud-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.weather-cloud.is-bank {
+  width: min(92vw, 48rem);
+}
+
+.weather-atmosphere[data-day="0"] .weather-cloud {
+  filter: brightness(0.55);
 }
 
 .weather-rain span {
@@ -163,6 +186,15 @@ body {
   inset: 0;
   background: rgba(210, 220, 255, 0.35);
   opacity: 0;
+  animation: weather-flash 7s ease-in-out infinite;
+}
+
+.weather-bolt {
+  position: absolute;
+  height: auto;
+  color: #e8eeff;
+  opacity: 0;
+  pointer-events: none;
   animation: weather-flash 7s ease-in-out infinite;
 }
 
@@ -208,6 +240,17 @@ body {
   }
 }
 
+@keyframes weather-cloud-drift {
+  from {
+    transform: translate3d(0, 0, 0)
+      scale(calc(var(--scale, 1) * var(--flip, 1)), var(--scale, 1));
+  }
+  to {
+    transform: translate3d(var(--drift, 48px), -12px, 0)
+      scale(calc(var(--scale, 1) * var(--flip, 1)), var(--scale, 1));
+  }
+}
+
 @keyframes weather-rain-fall {
   from {
     transform: translate3d(0, -10vh, 0);
@@ -246,62 +289,6 @@ body {
   }
 }
 
-.page-orbs {
-  --scroll: 0;
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.page-orbs span {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  will-change: transform;
-  transition: background 0.8s ease;
-}
-
-.page-orbs span:nth-child(1) {
-  width: min(46vw, 34rem);
-  height: min(46vw, 34rem);
-  top: -10%;
-  left: -8%;
-  background: var(--orb-1);
-  transform: translate3d(
-    calc(var(--scroll) * 0.05px),
-    calc(var(--scroll) * 0.08px),
-    0
-  );
-}
-
-.page-orbs span:nth-child(2) {
-  width: min(40vw, 30rem);
-  height: min(40vw, 30rem);
-  right: -10%;
-  top: 22%;
-  background: var(--orb-2);
-  transform: translate3d(
-    calc(var(--scroll) * -0.07px),
-    calc(var(--scroll) * -0.04px),
-    0
-  );
-}
-
-.page-orbs span:nth-child(3) {
-  width: min(36vw, 26rem);
-  height: min(36vw, 26rem);
-  left: 28%;
-  bottom: -12%;
-  background: var(--orb-3);
-  transform: translate3d(
-    calc(var(--scroll) * 0.03px),
-    calc(var(--scroll) * -0.1px),
-    0
-  );
-}
-
 .glass-panel {
   position: relative;
   background: color-mix(in srgb, var(--surface) 60%, transparent);
@@ -337,18 +324,32 @@ body {
   z-index: 1;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .page-orbs span:nth-child(n) {
-    transform: none;
-    will-change: auto;
-  }
+.section-block,
+.contact-block {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
+}
 
+html.weather-paused .weather-sun,
+html.weather-paused .weather-stars span,
+html.weather-paused .weather-haze,
+html.weather-paused .weather-cloud,
+html.weather-paused .weather-rain span,
+html.weather-paused .weather-snow span,
+html.weather-paused .weather-flash,
+html.weather-paused .weather-bolt {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
   .weather-sun,
   .weather-stars span,
   .weather-haze,
+  .weather-cloud,
   .weather-rain span,
   .weather-snow span,
-  .weather-flash {
+  .weather-flash,
+  .weather-bolt {
     animation: none !important;
   }
 
@@ -363,7 +364,6 @@ body {
 }
 
 @media print {
-  .page-orbs,
   .weather-atmosphere {
     display: none;
   }

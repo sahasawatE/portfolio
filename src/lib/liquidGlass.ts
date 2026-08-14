@@ -24,8 +24,56 @@ const DEFAULT_BEZEL = 100;
 const DEFAULT_THICKNESS = 100;
 const DEFAULT_SCALE_RATIO = 0.7;
 
+const MAP_MAX_SIDE = 360;
+const CACHE_LIMIT = 4;
+
 const cache = new Map<string, LiquidGlassMaps>();
 const inflight = new Map<string, Promise<LiquidGlassMaps | null>>();
+
+function fitMapSize(
+  width: number,
+  height: number,
+): { w: number; h: number; ratio: number } {
+  const longest = Math.max(width, height);
+  if (longest <= MAP_MAX_SIDE) {
+    return { w: width, h: height, ratio: 1 };
+  }
+  const ratio = MAP_MAX_SIDE / longest;
+  return {
+    w: Math.max(4, Math.round(width * ratio)),
+    h: Math.max(4, Math.round(height * ratio)),
+    ratio,
+  };
+}
+
+function revokeMaps(maps: LiquidGlassMaps) {
+  URL.revokeObjectURL(maps.displacement);
+  URL.revokeObjectURL(maps.specular);
+}
+
+function cacheGet(key: string): LiquidGlassMaps | undefined {
+  const hit = cache.get(key);
+  if (!hit) return undefined;
+  cache.delete(key);
+  cache.set(key, hit);
+  return hit;
+}
+
+function cacheSet(key: string, maps: LiquidGlassMaps) {
+  const prev = cache.get(key);
+  if (prev && prev !== maps) {
+    revokeMaps(prev);
+    cache.delete(key);
+  }
+  while (cache.size >= CACHE_LIMIT) {
+    const oldest = cache.keys().next().value;
+    if (oldest == null) break;
+    const stale = cache.get(oldest);
+    if (stale) revokeMaps(stale);
+    cache.delete(oldest);
+  }
+  cache.set(key, maps);
+}
 
 function squircle(x: number): number {
   const t = 1 - Math.min(1, Math.max(0, x));
@@ -198,34 +246,39 @@ export function getLiquidGlassMaps({
   thickness = DEFAULT_THICKNESS,
   scaleRatio = DEFAULT_SCALE_RATIO,
 }: MapInput): Promise<LiquidGlassMaps | null> {
-  const w = Math.round(width);
-  const h = Math.round(height);
-  if (w < 4 || h < 4) return Promise.resolve(null);
+  const displayW = Math.round(width);
+  const displayH = Math.round(height);
+  if (displayW < 4 || displayH < 4) return Promise.resolve(null);
 
-  const r = Math.min(Math.max(0, radius), w * 0.5, h * 0.5);
-  const bezel = Math.min(bezelInput, Math.min(w, h) / 2);
-  const key = `${w}x${h}r${Math.round(r)}b${bezel}t${thickness}s${scaleRatio}`;
-  const hit = cache.get(key);
+  const { w, h, ratio } = fitMapSize(displayW, displayH);
+  const displayR = Math.min(
+    Math.max(0, radius),
+    displayW * 0.5,
+    displayH * 0.5,
+  );
+  const displayBezel = Math.min(bezelInput, Math.min(displayW, displayH) / 2);
+  const key = `${displayW}x${displayH}p${w}x${h}r${Math.round(displayR)}b${displayBezel}t${thickness}s${scaleRatio}`;
+  const hit = cacheGet(key);
   if (hit) return Promise.resolve(hit);
 
   const pending = inflight.get(key);
   if (pending) return pending;
 
-  const { normalized, scale } = precomputeMagnitudes(bezel, thickness);
-  const painted = paintMaps(w, h, r, bezel, normalized);
+  const { normalized, scale } = precomputeMagnitudes(displayBezel, thickness);
+  const painted = paintMaps(w, h, displayR * ratio, displayBezel * ratio, normalized);
   const build = Promise.all([
     imageDataToBlobUrl(painted.displacement),
     imageDataToBlobUrl(painted.specular),
   ]).then(([displacement, specular]) => {
     if (!displacement || !specular) return null;
     const maps: LiquidGlassMaps = {
-      width: w,
-      height: h,
+      width: displayW,
+      height: displayH,
       scale: scale * scaleRatio,
       displacement,
       specular,
     };
-    cache.set(key, maps);
+    cacheSet(key, maps);
     return maps;
   }).finally(() => {
     inflight.delete(key);

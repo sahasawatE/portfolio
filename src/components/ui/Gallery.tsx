@@ -56,6 +56,10 @@ export function Gallery({ images, alt }: GalleryProps) {
               <img
                 src={src}
                 alt={`${alt} ${index + 1}`}
+                width={256}
+                height={176}
+                loading="lazy"
+                decoding="async"
                 className="h-40 w-56 object-cover md:h-44 md:w-64"
               />
             </motion.button>
@@ -85,6 +89,7 @@ export function Gallery({ images, alt }: GalleryProps) {
                 <img
                   src={srcs[open]}
                   alt={`${alt} ${open + 1}`}
+                  decoding="async"
                   className="max-h-[78vh] w-full rounded-ios object-contain shadow-[0_12px_40px_rgba(0,0,0,0.28)]"
                 />
               </motion.div>

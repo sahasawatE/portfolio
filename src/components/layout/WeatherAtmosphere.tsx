@@ -1,6 +1,19 @@
-import { useMemo, type CSSProperties } from "react";
-import { prefersReducedMotion } from "@/lib/liquidGlass";
+import { useEffect, useMemo, type CSSProperties } from "react";
+import { publicUrl } from "@/lib/assets";
+import { useLiteMode } from "@/lib/perf";
 import type { WeatherTheme } from "@/lib/weather";
+
+const CLOUD_SOLO = {
+  src: publicUrl("/media/weather-clouds1.png"),
+  width: 1260,
+  height: 605,
+} as const;
+
+const CLOUD_BANK = {
+  src: publicUrl("/media/weather-clouds2.png"),
+  width: 1883,
+  height: 538,
+} as const;
 
 type WeatherAtmosphereProps = {
   theme: WeatherTheme;
@@ -12,11 +25,25 @@ function seeded(i: number, salt: number): number {
 }
 
 export function WeatherAtmosphere({ theme }: WeatherAtmosphereProps) {
-  const reduced = prefersReducedMotion();
+  const lite = useLiteMode();
   const { kind, isDay, particle } = theme;
 
+  useEffect(() => {
+    const root = document.documentElement;
+    const sync = () => {
+      root.classList.toggle("weather-paused", document.hidden);
+    };
+    sync();
+    document.addEventListener("visibilitychange", sync);
+    return () => {
+      document.removeEventListener("visibilitychange", sync);
+      root.classList.remove("weather-paused");
+    };
+  }, []);
+
   const drops = useMemo(() => {
-    const count = kind === "drizzle" ? 28 : kind === "rain" || kind === "thunder" ? 42 : 0;
+    if (lite) return [];
+    const count = kind === "drizzle" ? 16 : kind === "rain" || kind === "thunder" ? 20 : 0;
     return Array.from({ length: count }, (_, i) => ({
       left: `${seeded(i, 1) * 100}%`,
       delay: `${seeded(i, 2) * 1.4}s`,
@@ -24,11 +51,11 @@ export function WeatherAtmosphere({ theme }: WeatherAtmosphereProps) {
       height: `${10 + seeded(i, 4) * 16}px`,
       opacity: 0.25 + seeded(i, 5) * 0.45,
     }));
-  }, [kind]);
+  }, [kind, lite]);
 
   const flakes = useMemo(() => {
-    if (kind !== "snow") return [];
-    return Array.from({ length: 36 }, (_, i) => ({
+    if (lite || kind !== "snow") return [];
+    return Array.from({ length: 16 }, (_, i) => ({
       left: `${seeded(i, 6) * 100}%`,
       delay: `${seeded(i, 7) * 5}s`,
       duration: `${4.5 + seeded(i, 8) * 5}s`,
@@ -36,18 +63,74 @@ export function WeatherAtmosphere({ theme }: WeatherAtmosphereProps) {
       drift: `${(seeded(i, 10) - 0.5) * 40}px`,
       opacity: 0.35 + seeded(i, 11) * 0.5,
     }));
-  }, [kind]);
+  }, [kind, lite]);
 
   const stars = useMemo(() => {
-    if (kind !== "clear" || isDay) return [];
-    return Array.from({ length: 48 }, (_, i) => ({
+    if (lite || kind !== "clear" || isDay) return [];
+    return Array.from({ length: 16 }, (_, i) => ({
       left: `${seeded(i, 12) * 100}%`,
       top: `${seeded(i, 13) * 70}%`,
       delay: `${seeded(i, 14) * 4}s`,
       size: `${1 + seeded(i, 15) * 2}px`,
       opacity: 0.35 + seeded(i, 16) * 0.55,
     }));
-  }, [kind, isDay]);
+  }, [kind, isDay, lite]);
+
+  const clouds = useMemo(() => {
+    if (lite || (kind !== "cloudy" && kind !== "thunder")) return [];
+    const day = isDay ? 0.88 : 0.36;
+    const daySoft = isDay ? 0.7 : 0.28;
+    return [
+      {
+        ...CLOUD_SOLO,
+        bank: false,
+        left: "-8%",
+        top: "4%",
+        scale: 0.92,
+        opacity: day,
+        delay: "-12s",
+        duration: "46s",
+        drift: "52px",
+        flip: false,
+      },
+      {
+        ...CLOUD_SOLO,
+        bank: false,
+        left: "48%",
+        top: "38%",
+        scale: 0.72,
+        opacity: daySoft,
+        delay: "-28s",
+        duration: "54s",
+        drift: "40px",
+        flip: true,
+      },
+      {
+        ...CLOUD_BANK,
+        bank: true,
+        left: "22%",
+        top: "14%",
+        scale: 1.08,
+        opacity: daySoft,
+        delay: "-8s",
+        duration: "58s",
+        drift: "64px",
+        flip: false,
+      },
+      {
+        ...CLOUD_BANK,
+        bank: true,
+        left: "-18%",
+        top: "28%",
+        scale: 0.95,
+        opacity: isDay ? 0.62 : 0.24,
+        delay: "-36s",
+        duration: "72s",
+        drift: "48px",
+        flip: true,
+      },
+    ];
+  }, [kind, isDay, lite]);
 
   return (
     <div
@@ -58,11 +141,11 @@ export function WeatherAtmosphere({ theme }: WeatherAtmosphereProps) {
     >
       <div className="weather-wash" />
 
-      {!reduced && kind === "clear" && isDay ? (
+      {!lite && kind === "clear" && isDay ? (
         <div className="weather-sun" style={{ color: particle }} />
       ) : null}
 
-      {!reduced && stars.length > 0 ? (
+      {stars.length > 0 ? (
         <div className="weather-stars">
           {stars.map((s, i) => (
             <span
@@ -81,11 +164,39 @@ export function WeatherAtmosphere({ theme }: WeatherAtmosphereProps) {
         </div>
       ) : null}
 
-      {!reduced && (kind === "cloudy" || kind === "fog") ? (
-        <div className={`weather-haze${kind === "fog" ? " is-fog" : ""}`} />
+      {clouds.length > 0 ? (
+        <div className="weather-clouds">
+          {clouds.map((c, i) => {
+            const style = {
+              left: c.left,
+              top: c.top,
+              opacity: c.opacity,
+              animationDelay: c.delay,
+              animationDuration: c.duration,
+              "--scale": String(c.scale),
+              "--drift": c.drift,
+              "--flip": c.flip ? "-1" : "1",
+            } as CSSProperties;
+            return (
+              <img
+                key={i}
+                className={c.bank ? "weather-cloud is-bank" : "weather-cloud"}
+                src={c.src}
+                alt=""
+                width={c.width}
+                height={c.height}
+                decoding="async"
+                draggable={false}
+                style={style}
+              />
+            );
+          })}
+        </div>
       ) : null}
 
-      {!reduced && drops.length > 0 ? (
+      {!lite && kind === "fog" ? <div className="weather-haze is-fog" /> : null}
+
+      {drops.length > 0 ? (
         <div className="weather-rain">
           {drops.map((d, i) => (
             <span
@@ -103,9 +214,55 @@ export function WeatherAtmosphere({ theme }: WeatherAtmosphereProps) {
         </div>
       ) : null}
 
-      {!reduced && kind === "thunder" ? <div className="weather-flash" /> : null}
+      {!lite && kind === "thunder" ? (
+        <>
+          <div className="weather-flash" />
+          <svg
+            className="weather-bolt"
+            viewBox="0 0 48 180"
+            style={{ left: "22%", top: "8%", width: "4.5rem" }}
+          >
+            <polyline
+              points="26,0 18,46 32,52 12,104 24,110 8,180"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.4"
+              strokeLinejoin="miter"
+              strokeLinecap="round"
+            />
+            <polyline
+              points="26,0 18,46 32,52 12,104"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="5"
+              opacity="0.32"
+            />
+          </svg>
+          <svg
+            className="weather-bolt"
+            viewBox="0 0 48 180"
+            style={{ left: "68%", top: "4%", width: "3.4rem" }}
+          >
+            <polyline
+              points="20,0 28,40 14,48 30,96 16,104 34,180"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinejoin="miter"
+              strokeLinecap="round"
+            />
+            <polyline
+              points="20,0 28,40 14,48 30,96"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="4.6"
+              opacity="0.3"
+            />
+          </svg>
+        </>
+      ) : null}
 
-      {!reduced && flakes.length > 0 ? (
+      {flakes.length > 0 ? (
         <div className="weather-snow">
           {flakes.map((f, i) => {
             const style = {

@@ -99,6 +99,9 @@ export function Hero({ basics, education }: HeroProps) {
           className="hero__photo h-36 w-36 rounded-ios object-cover shadow-[0_8px_24px_rgba(0,0,0,0.08)] md:h-44 md:w-44"
           src={photoSrc}
           alt={basics.name}
+          width={176}
+          height={176}
+          decoding="async"
           initial={{ opacity: 0, scale: 0.92, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 260, damping: 22, delay: 0.18 }}

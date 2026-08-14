@@ -12,12 +12,15 @@ import {
   prefersReducedMotion,
   type LiquidGlassMaps,
 } from "@/lib/liquidGlass";
+import { useLiteMode } from "@/lib/perf";
 
 type GlassSurfaceProps = {
   children: ReactNode;
   className?: string;
   radius?: number | "auto";
   followPointer?: boolean;
+  /** SVG refraction on Chromium; CSS blur everywhere else. Cards stay on css. */
+  effect?: "css" | "liquid";
   blur?: number;
   specularOpacity?: number;
   specularSaturation?: number;
@@ -147,6 +150,7 @@ function LiquidGlassFilter({
 export function GlassSurface({
   children,
   className,
+  effect = "css",
   blur = 1,
   specularOpacity = 0.5,
   specularSaturation = 6,
@@ -158,11 +162,17 @@ export function GlassSurface({
 }: GlassSurfaceProps) {
   const rawId = useId();
   const filterId = `lg-${rawId.replace(/:/g, "")}`;
+  const lite = useLiteMode();
+  const useLiquid = effect === "liquid" && !lite;
   const [node, setNode] = useState<HTMLDivElement | null>(null);
   const [maps, setMaps] = useState<LiquidGlassMaps | null>(null);
   const [filterReady, setFilterReady] = useState(false);
 
   useEffect(() => {
+    if (!useLiquid) {
+      setMaps(null);
+      return;
+    }
     if (!node) return;
     if (!isChromiumSvgBackdropSupported()) return;
 
@@ -210,7 +220,7 @@ export function GlassSurface({
       motion.removeEventListener("change", rebuild);
       observer.disconnect();
     };
-  }, [node, bezel, thickness, scaleRatio]);
+  }, [node, bezel, thickness, scaleRatio, useLiquid]);
 
   useEffect(() => {
     if (!maps) {

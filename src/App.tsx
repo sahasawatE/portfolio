@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { MotionConfig } from "framer-motion";
 import { NavBar } from "@/components/layout/NavBar";
-import { PageOrbs } from "@/components/layout/PageOrbs";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { WeatherAtmosphere } from "@/components/layout/WeatherAtmosphere";
 import { Contact } from "@/components/sections/Contact";
@@ -38,7 +37,6 @@ export function App() {
       <MotionConfig reducedMotion="user">
         <div className="relative min-h-screen text-label">
           <WeatherAtmosphere theme={weather.theme} />
-          <PageOrbs theme={weather.theme} />
           <div className="relative z-1">
             <NavBar resume={resume} />
             <main className="page mx-auto flex max-w-5xl flex-col gap-16 px-5 pt-12 pb-24 md:gap-20 md:pt-16">

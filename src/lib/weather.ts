@@ -16,8 +16,6 @@ export type WeatherTheme = {
   /** Page / body wash */
   bg: string;
   bgAccent: string;
-  /** Soft orb colors (shown through liquid glass) */
-  orbs: [string, string, string];
   /** Particle / overlay tint */
   particle: string;
   /** Slightly lift glass saturate on vivid skies */
@@ -89,11 +87,6 @@ export function themeFor(kind: WeatherKind, isDay: boolean): WeatherTheme {
       label,
       bg: isDay ? "#6b7388" : "#12131c",
       bgAccent: isDay ? "#8b7aa8" : "#2a2440",
-      orbs: [
-        "color-mix(in srgb, #7c6cff 42%, transparent)",
-        "color-mix(in srgb, #4a90ff 28%, transparent)",
-        "color-mix(in srgb, #c4b5fd 22%, transparent)",
-      ],
       particle: "rgba(200, 210, 255, 0.55)",
       glassBoost: 1.15,
     };
@@ -106,12 +99,9 @@ export function themeFor(kind: WeatherKind, isDay: boolean): WeatherTheme {
       label,
       bg: isDay ? "#8fa3b8" : "#0e141c",
       bgAccent: isDay ? "#a8b9c9" : "#1a2836",
-      orbs: [
-        "color-mix(in srgb, #5b9fd4 36%, transparent)",
-        "color-mix(in srgb, #7eb6d9 24%, transparent)",
-        "color-mix(in srgb, #94a3b8 18%, transparent)",
-      ],
-      particle: isDay ? "rgba(255, 255, 255, 0.55)" : "rgba(180, 210, 240, 0.45)",
+      particle: isDay
+        ? "rgba(255, 255, 255, 0.55)"
+        : "rgba(180, 210, 240, 0.45)",
       glassBoost: 1.1,
     };
   }
@@ -123,11 +113,6 @@ export function themeFor(kind: WeatherKind, isDay: boolean): WeatherTheme {
       label,
       bg: isDay ? "#d9e4f0" : "#0c1218",
       bgAccent: isDay ? "#eef3f8" : "#1a2430",
-      orbs: [
-        "color-mix(in srgb, #a8c8e8 40%, transparent)",
-        "color-mix(in srgb, #dbeafe 32%, transparent)",
-        "color-mix(in srgb, #93c5fd 18%, transparent)",
-      ],
       particle: "rgba(255, 255, 255, 0.85)",
       glassBoost: 1.05,
     };
@@ -140,11 +125,6 @@ export function themeFor(kind: WeatherKind, isDay: boolean): WeatherTheme {
       label,
       bg: isDay ? "#c5c8ce" : "#141618",
       bgAccent: isDay ? "#d6d8dc" : "#22262a",
-      orbs: [
-        "color-mix(in srgb, #9aa3ad 35%, transparent)",
-        "color-mix(in srgb, #b8bfc7 28%, transparent)",
-        "color-mix(in srgb, #8b949e 16%, transparent)",
-      ],
       particle: "rgba(255, 255, 255, 0.2)",
       glassBoost: 0.95,
     };
@@ -157,12 +137,9 @@ export function themeFor(kind: WeatherKind, isDay: boolean): WeatherTheme {
       label,
       bg: isDay ? "#b7c6d6" : "#10151c",
       bgAccent: isDay ? "#cdd8e4" : "#1c2530",
-      orbs: [
-        "color-mix(in srgb, #7aa2c4 34%, transparent)",
-        "color-mix(in srgb, #9fb4c8 26%, transparent)",
-        "color-mix(in srgb, #64d2ff 14%, transparent)",
-      ],
-      particle: "rgba(255, 255, 255, 0.25)",
+      particle: isDay
+        ? "rgba(248, 250, 252, 0.88)"
+        : "rgba(170, 186, 210, 0.42)",
       glassBoost: 1,
     };
   }
@@ -175,11 +152,6 @@ export function themeFor(kind: WeatherKind, isDay: boolean): WeatherTheme {
       label,
       bg: "#cfe7ff",
       bgAccent: "#e8f4ff",
-      orbs: [
-        "color-mix(in srgb, #007aff 28%, transparent)",
-        "color-mix(in srgb, #ffcc66 22%, transparent)",
-        "color-mix(in srgb, #64d2ff 18%, transparent)",
-      ],
       particle: "rgba(255, 236, 180, 0.35)",
       glassBoost: 1.2,
     };
@@ -191,11 +163,6 @@ export function themeFor(kind: WeatherKind, isDay: boolean): WeatherTheme {
     label,
     bg: "#070b16",
     bgAccent: "#121a2e",
-    orbs: [
-      "color-mix(in srgb, #4c6fff 30%, transparent)",
-      "color-mix(in srgb, #8b9cff 18%, transparent)",
-      "color-mix(in srgb, #c7d2fe 12%, transparent)",
-    ],
     particle: "rgba(220, 230, 255, 0.7)",
     glassBoost: 1.1,
   };
@@ -243,7 +210,9 @@ export async function fetchWeather(): Promise<WeatherSnapshot> {
     url.searchParams.set("current", "temperature_2m,weather_code,is_day");
     url.searchParams.set("timezone", "auto");
 
-    const res = await fetch(url.toString(), { signal: AbortSignal.timeout(8000) });
+    const res = await fetch(url.toString(), {
+      signal: AbortSignal.timeout(8000),
+    });
     if (!res.ok) return base;
 
     const data = (await res.json()) as OpenMeteoResponse;
@@ -259,7 +228,9 @@ export async function fetchWeather(): Promise<WeatherSnapshot> {
       isDay,
       code,
       temperatureC:
-        typeof current.temperature_2m === "number" ? current.temperature_2m : null,
+        typeof current.temperature_2m === "number"
+          ? current.temperature_2m
+          : null,
       theme: themeFor(kind, isDay),
       source: "live",
     };

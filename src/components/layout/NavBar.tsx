@@ -17,11 +17,12 @@ export function NavBar({ resume }: NavBarProps) {
     <header className="site-nav sticky top-0 z-50 px-4 pt-3">
       <GlassSurface
         className="glass-panel mx-auto max-w-5xl rounded-ios"
+        effect="liquid"
         blur={3}
         specularOpacity={0.5}
         specularSaturation={50}
         refraction={1}
-        progressiveBlur={1}
+        progressiveBlur={0.35}
       >
         <div className="flex items-center justify-between gap-3 px-5 py-3">
           <a
