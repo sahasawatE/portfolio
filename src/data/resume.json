@@ -158,15 +158,6 @@
             "Published an NPX initializer and Nuxt 3 + Vuetify 3 starter that standardizes project bootstrap for the Abbot Nuxt stack.",
             "Shared a reusable ESLint configuration package tailored for Abbot Nuxt 3 and TypeScript projects."
           ]
-        },
-        {
-          "name": "AI schedule assistance using n8n (locally)",
-          "date": "July 2025",
-          "url": "",
-          "highlights": [
-            "Researched and developed an AI assistance schedule using the n8n platform with the QWEN3:14b model that can create, delete, and edit a calendar event based on my prompt.",
-            "Connected an AI assistant to the Line official account for chatting accessibility."
-          ]
         }
       ]
     },
