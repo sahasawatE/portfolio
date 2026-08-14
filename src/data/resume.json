@@ -1,0 +1,228 @@
+{
+  "basics": {
+    "name": "Sahasawat Uengwanitchaphan",
+    "title": "Frontend Web Developer",
+    "email": "hoklok3@gmail.com",
+    "phone": "+66 90-043-3337",
+    "location": "Bangkok, Thailand",
+    "photo": "/profile.jpg",
+    "summary": "",
+    "links": [
+      {
+        "label": "github.com/sahasawatE",
+        "icon": "github",
+        "url": "https://github.com/sahasawatE"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "experience",
+      "title": "Work Experiences",
+      "icon": "work",
+      "items": [
+        {
+          "company": "Abbot Technology",
+          "role": "Frontend Developer",
+          "location": "Bangkok, Thailand",
+          "start": "Apr 2023",
+          "end": "present",
+          "links": [
+            {
+              "label": "abbity",
+              "url": "https://github.com/sahasawatE/abbity"
+            },
+            {
+              "label": "abbot-http-client",
+              "url": "https://www.npmjs.com/package/abbot-http-client"
+            },
+            {
+              "label": "Nuxt 3 tooling",
+              "url": "https://github.com/sahasawatE/abbot-npx-init-nuxt3"
+            }
+          ],
+          "highlights": [
+            "Researched and established an optimal Nuxt3 project structure and ESLint configuration tailored for team efficiency; implemented an NPX script that streamlined project initialization, reducing setup time by 80% for new developers.",
+            "Created and published abbot-http-client, a reusable TypeScript Axios HTTP client for the Abbot stack with request/response encryption, typed responses, interceptors, file uploads, and blob downloads.",
+            "Conducted thorough code reviews for junior developers in collaboration with a senior developer, identifying key areas for improvement that led to a 30% reduction in code-related issues and enhanced overall software quality.",
+            "Implemented a monorepo structure using TurboRepo to manage 3 React apps, 2 main packages, 1 ESLint setup, 1 TypeScript config, and 1 Tailwind config. Key features included theming consistency, accessibility support, and project building optimizations. Reducing frontend development time by 90% and improving code quality and code duplication.",
+            "Handled the Kasikorn Asset PVD Registra project using React.js with the Vite build tool and customized components for complex requirements and saved 40% of development time; set up a CI/CD pipeline for several environments; recreated React customizable components that fit the clients' needs."
+          ]
+        },
+        {
+          "company": "Playtorium Solution",
+          "role": "Automation Tester",
+          "location": "Bangkok, Thailand",
+          "start": "Jun 2022",
+          "end": "Apr 2023",
+          "highlights": [
+            "Designed and created test cases and implemented test scripts for all scenarios based on use case flows in three different environments using Playwright and Docker. Coordinated with developers and the DevOps team to design and implement a pipeline for GitLab CI/CD for testing and deployment."
+          ]
+        },
+        {
+          "company": "Abbot Technology",
+          "role": "Frontend Developer (part-time)",
+          "location": "Bangkok, Thailand",
+          "start": "Mar 2022",
+          "end": "Apr 2023",
+          "highlights": [
+            "Aided senior developers in creating and maintaining a government platform called Mohpromt Station, a React application for COVID-19 vaccination and hospital services. The application includes complex UI components such as forms with steppers, socket graph data streaming, and a data encryption and decryption plugin for API communication.",
+            "Handled Chula Hospital's system management web portal using Nuxt2 and coordinated with hospital staff to gather requirements and resolve issues. Implemented a Vue2 component from the QR code reader library and camera module. Provided data structures to API teams to ensure compatibility of complex UI component props."
+          ],
+          "images": [
+            "/media/abbot1.jpg",
+            "/media/abbot2.jpg"
+          ]
+        },
+        {
+          "company": "Bitkub",
+          "role": "UX/UI Designer (intern)",
+          "location": "Bangkok, Thailand",
+          "start": "Jun 2021",
+          "end": "Aug 2021",
+          "highlights": [
+            "Helped senior designers create UI components and analyze user requirements, and learned to use tools such as Figma, Jira, and the Agile process."
+          ],
+          "images": ["/media/bitkub.jpg", "/media/figma.jpg"]
+        }
+      ]
+    },
+    {
+      "type": "projects",
+      "title": "Selected Projects",
+      "icon": "project",
+      "items": [
+        {
+          "name": "abbity",
+          "date": "2026",
+          "url": "https://github.com/sahasawatE/abbity",
+          "links": [
+            {
+              "label": "github.com/sahasawatE/abbity",
+              "url": "https://github.com/sahasawatE/abbity"
+            }
+          ],
+          "highlights": [
+            "Built a TypeScript/Node.js interactive CLI that scaffolds frontend projects by prompting for framework, meta-framework, UI library, tooling, import aliases, and package manager.",
+            "Clones the matching template, installs dependencies, and configures selected tooling such as ESLint and Prettier so new projects start ready to run."
+          ]
+        },
+        {
+          "name": "abbot-http-client",
+          "date": "2025 – present",
+          "url": "https://www.npmjs.com/package/abbot-http-client",
+          "links": [
+            {
+              "label": "npmjs.com/package/abbot-http-client",
+              "url": "https://www.npmjs.com/package/abbot-http-client"
+            }
+          ],
+          "highlights": [
+            "Published a TypeScript Axios HTTP client for the Abbot stack with typed AbbotResponse envelopes, injectable request/response encryption, custom interceptors, and X-Trace-Id / Bearer auth headers.",
+            "Added file upload helpers, decrypting blob download support, and normalized error handling for timeout, network, and unauthorized responses."
+          ]
+        },
+        {
+          "name": "HOK UI",
+          "date": "2024 – 2025",
+          "url": "https://github.com/sahasawatE/hokui",
+          "links": [
+            {
+              "label": "github.com/sahasawatE/hokui",
+              "url": "https://github.com/sahasawatE/hokui"
+            }
+          ],
+          "highlights": [
+            "Created a React UI component library based on React Aria and Tailwind CSS, with theming, layout plugins, and Thai locale support.",
+            "Exposed reusable primitives such as buttons plus toast and dialog APIs through a shared provider and hooks."
+          ]
+        },
+        {
+          "name": "Nuxt 3 Tooling",
+          "date": "2024",
+          "links": [
+            {
+              "label": "abbot-npx-init-nuxt3",
+              "url": "https://github.com/sahasawatE/abbot-npx-init-nuxt3"
+            },
+            {
+              "label": "abbot-init-nuxt3",
+              "url": "https://github.com/sahasawatE/abbot-init-nuxt3"
+            },
+            {
+              "label": "abbot-eslint-nuxt3",
+              "url": "https://github.com/sahasawatE/abbot-eslint-nuxt3"
+            }
+          ],
+          "highlights": [
+            "Published an NPX initializer and Nuxt 3 + Vuetify 3 starter that standardizes project bootstrap for the Abbot Nuxt stack.",
+            "Shared a reusable ESLint configuration package tailored for Abbot Nuxt 3 and TypeScript projects."
+          ]
+        },
+        {
+          "name": "AI schedule assistance using n8n (locally)",
+          "date": "July 2025",
+          "url": "",
+          "highlights": [
+            "Researched and developed an AI assistance schedule using the n8n platform with the QWEN3:14b model that can create, delete, and edit a calendar event based on my prompt.",
+            "Connected an AI assistant to the Line official account for chatting accessibility."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "education",
+      "title": "Education",
+      "icon": "education",
+      "items": [
+        {
+          "institution": "Chulalongkorn University",
+          "degree": "B.Sc., Computer Science",
+          "location": "Bangkok, Thailand",
+          "start": "2018",
+          "end": "2022",
+          "highlights": []
+        }
+      ]
+    },
+    {
+      "type": "skills",
+      "title": "Skills",
+      "icon": "skills",
+      "groups": [
+        {
+          "name": "Soft Skills",
+          "items": [
+            "Creativity",
+            "Collaboration and Teamwork",
+            "Complex Decision Making",
+            "Leadership",
+            "Time Management"
+          ]
+        },
+        {
+          "name": "Technical Skills",
+          "items": [
+            "Create and Design database",
+            "Object Oriented Program",
+            "Figma",
+            "Git",
+            "React.js",
+            "Next.js",
+            "Vue.js",
+            "Nuxt.js",
+            "JavaScript",
+            "TypeScript",
+            "Flutter",
+            "Playwright",
+            "Cypress",
+            "SQL",
+            "Dart",
+            "Vitest",
+            "TurboRepo"
+          ]
+        }
+      ]
+    }
+  ]
+}

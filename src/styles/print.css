@@ -1,0 +1,95 @@
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: calc(10pt * var(--print-scale, 1));
+    line-height: 1.4;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  .site-nav {
+    display: none !important;
+  }
+
+  .page {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero,
+  .section-block,
+  .contact-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .hero {
+    display: block;
+    padding-bottom: 0.55rem;
+    border-bottom: 1.2pt solid var(--print-accent, #1f2937);
+  }
+
+  .hero__photo {
+    width: 68px;
+    height: 68px;
+  }
+
+  .hero__name {
+    font-size: 19pt !important;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__title {
+    color: var(--print-accent, #1f2937) !important;
+    font-size: 10.5pt !important;
+  }
+
+  .section-title {
+    font-size: 11pt !important;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .entry,
+  .skill-group {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .skill-chip {
+    padding: 0 0.3rem 0 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    font-size: 9pt;
+  }
+
+  .skill-chip:not(:last-child)::after {
+    content: ",";
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .entry-links a {
+    text-decoration: underline;
+    color: var(--print-accent, #1f2937);
+  }
+
+  img {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
