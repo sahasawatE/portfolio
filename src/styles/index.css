@@ -11,6 +11,8 @@
   --gray6: #f2f2f7;
   --nav: rgba(255, 255, 255, 0.72);
   --print-accent: #1f2937;
+  --glass-border: color-mix(in srgb, #ffffff 70%, var(--label) 12%);
+  --glass-highlight: color-mix(in srgb, #ffffff 78%, transparent);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,6 +25,8 @@
     --separator: rgba(84, 84, 88, 0.65);
     --gray6: #2c2c2e;
     --nav: rgba(28, 28, 30, 0.72);
+    --glass-border: color-mix(in srgb, #ffffff 15%, transparent);
+    --glass-highlight: color-mix(in srgb, #ffffff 18%, transparent);
   }
 }
 
@@ -108,9 +112,9 @@ body {
 .glass-panel {
   position: relative;
   background: color-mix(in srgb, var(--surface) 60%, transparent);
-  border: 1px solid color-mix(in srgb, #ffffff 70%, var(--label) 12%);
+  border: 1px solid var(--glass-border);
   box-shadow:
-    inset 0 1px 0 color-mix(in srgb, #ffffff 78%, transparent),
+    inset 0 1px 0 var(--glass-highlight),
     inset 0 -1px 0 color-mix(in srgb, var(--label) 6%, transparent),
     0 1px 3px rgba(0, 0, 0, 0.06);
 }
