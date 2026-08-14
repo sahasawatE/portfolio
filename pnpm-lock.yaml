@@ -20,6 +20,9 @@ importers:
       react-dom:
         specifier: ^19.1.1
         version: 19.2.8(react@19.2.8)
+      react-ios-icons:
+        specifier: ^1.1.1
+        version: 1.1.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       '@react-pdf/renderer':
         specifier: ^4.6.0
@@ -975,6 +978,13 @@ packages:
     peerDependencies:
       react: ^19.2.8
 
+  react-ios-icons@1.1.1:
+    resolution: {integrity: sha512-zaKWFs5LfpgB+xdPSvosdWxGPmdQnttUNqISOFJHxuKaN7CVm20ATji1uSq6Y6/shTp+p22mONixKj3GLgiyUw==}
+    engines: {node: '>=20', pnpm: '>=8.6.12'}
+    peerDependencies:
+      react: '>=18.2.0'
+      react-dom: '>=18.2.0'
+
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -1916,6 +1926,11 @@ snapshots:
     dependencies:
       react: 19.2.8
       scheduler: 0.27.0
+
+  react-ios-icons@1.1.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+    dependencies:
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
 
   react-is@16.13.1: {}
 

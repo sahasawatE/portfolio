@@ -5,6 +5,13 @@ export function dateRange(start?: string, end?: string) {
   return start || end || "";
 }
 
+export function parseResumeDate(value?: string) {
+  if (!value) return 0;
+  if (value.toLowerCase() === "present") return Number.POSITIVE_INFINITY;
+  const time = Date.parse(`1 ${value}`);
+  return Number.isNaN(time) ? 0 : time;
+}
+
 export function findSection<T extends ResumeSection["type"]>(
   sections: ResumeSection[],
   type: T,

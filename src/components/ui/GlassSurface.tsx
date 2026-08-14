@@ -23,6 +23,9 @@ type GlassSurfaceProps = {
   specularSaturation?: number;
   refraction?: number;
   progressiveBlur?: number;
+  bezel?: number;
+  thickness?: number;
+  scaleRatio?: number;
 };
 
 function LiquidGlassFilter({
@@ -145,10 +148,13 @@ export function GlassSurface({
   children,
   className,
   blur = 1,
-  specularOpacity = 0.4,
+  specularOpacity = 0.5,
   specularSaturation = 6,
   refraction = 1,
   progressiveBlur = 0,
+  bezel = 75,
+  thickness = 70,
+  scaleRatio = 0.4,
 }: GlassSurfaceProps) {
   const rawId = useId();
   const filterId = `lg-${rawId.replace(/:/g, "")}`;
@@ -178,6 +184,9 @@ export function GlassSurface({
         width: rect.width,
         height: rect.height,
         radius: Number.isFinite(radius) ? radius : 0,
+        bezel,
+        thickness,
+        scaleRatio,
       }).then((next) => {
         if (!cancelled && gen === generation) setMaps(next);
       });
@@ -201,7 +210,7 @@ export function GlassSurface({
       motion.removeEventListener("change", rebuild);
       observer.disconnect();
     };
-  }, [node]);
+  }, [node, bezel, thickness, scaleRatio]);
 
   useEffect(() => {
     if (!maps) {

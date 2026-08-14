@@ -1,4 +1,4 @@
-import { normalizeLinks } from "@/lib/links";
+import { linkIconFromUrl, normalizeLinks } from "@/lib/links";
 import type { ResumeLink } from "@/types/resume";
 import { Icon } from "./Icon";
 
@@ -22,7 +22,7 @@ export function EntryLinks({ links, fallbackUrl }: EntryLinksProps) {
             target="_blank"
             rel="noreferrer"
           >
-            <Icon name="link" className="h-3.5 w-3.5" />
+            <Icon name={linkIconFromUrl(link.url)} className="h-3.5 w-3.5" />
             {link.label || link.url}
           </a>
         </li>

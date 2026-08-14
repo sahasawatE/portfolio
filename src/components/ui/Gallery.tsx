@@ -7,10 +7,9 @@ import { publicUrl } from "@/lib/assets";
 type GalleryProps = {
   images: string[];
   alt: string;
-  through?: "left" | "right";
 };
 
-export function Gallery({ images, alt, through }: GalleryProps) {
+export function Gallery({ images, alt }: GalleryProps) {
   const [open, setOpen] = useState<number | null>(null);
   const srcs = images.map(publicUrl);
   const lenis = useLenis();
@@ -42,14 +41,10 @@ export function Gallery({ images, alt, through }: GalleryProps) {
     <>
       <ul
         data-lenis-prevent
-        className={`flex w-full min-w-0 gap-3 overflow-x-auto pb-1 scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${
-          through
-            ? "max-md:snap-x max-md:snap-mandatory md:snap-none md:ps-[calc(var(--experience-card)+1.5rem)]"
-            : "snap-x snap-mandatory"
-        } ${through === "right" ? "md:[direction:rtl]" : ""}`}
+        className="flex w-full min-w-0 snap-x snap-mandatory gap-3 overflow-x-auto pb-1 scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         {srcs.map((src, index) => (
-          <li key={src} className="snap-start shrink-0" dir="ltr">
+          <li key={src} className="snap-start shrink-0">
             <motion.button
               type="button"
               className="block overflow-hidden rounded-2xl bg-gray6"

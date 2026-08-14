@@ -15,7 +15,14 @@ type MapInput = {
   width: number;
   height: number;
   radius: number;
+  bezel?: number;
+  thickness?: number;
+  scaleRatio?: number;
 };
+
+const DEFAULT_BEZEL = 100;
+const DEFAULT_THICKNESS = 100;
+const DEFAULT_SCALE_RATIO = 0.7;
 
 const cache = new Map<string, LiquidGlassMaps>();
 const inflight = new Map<string, Promise<LiquidGlassMaps | null>>();
@@ -108,11 +115,6 @@ function sdRoundedBox(
   );
 }
 
-function defaultBezel(width: number, height: number, radius: number): number {
-  const short = Math.min(width, height);
-  return Math.round(Math.min(36, Math.max(12, short * 0.33, radius * 0.85)));
-}
-
 function imageDataToBlobUrl(image: ImageData): Promise<string> {
   return new Promise((resolve) => {
     const canvas = document.createElement("canvas");
@@ -192,21 +194,23 @@ export function getLiquidGlassMaps({
   width,
   height,
   radius,
+  bezel: bezelInput = DEFAULT_BEZEL,
+  thickness = DEFAULT_THICKNESS,
+  scaleRatio = DEFAULT_SCALE_RATIO,
 }: MapInput): Promise<LiquidGlassMaps | null> {
   const w = Math.round(width);
   const h = Math.round(height);
   if (w < 4 || h < 4) return Promise.resolve(null);
 
   const r = Math.min(Math.max(0, radius), w * 0.5, h * 0.5);
-  const bezel = defaultBezel(w, h, r);
-  const key = `${w}x${h}r${Math.round(r)}b${bezel}`;
+  const bezel = Math.min(bezelInput, Math.min(w, h) / 2);
+  const key = `${w}x${h}r${Math.round(r)}b${bezel}t${thickness}s${scaleRatio}`;
   const hit = cache.get(key);
   if (hit) return Promise.resolve(hit);
 
   const pending = inflight.get(key);
   if (pending) return pending;
 
-  const thickness = bezel * 1.15;
   const { normalized, scale } = precomputeMagnitudes(bezel, thickness);
   const painted = paintMaps(w, h, r, bezel, normalized);
   const build = Promise.all([
@@ -217,7 +221,7 @@ export function getLiquidGlassMaps({
     const maps: LiquidGlassMaps = {
       width: w,
       height: h,
-      scale,
+      scale: scale * scaleRatio,
       displacement,
       specular,
     };

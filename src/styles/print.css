@@ -72,6 +72,12 @@
     border-radius: 0;
     background: transparent;
     font-size: 9pt;
+    display: inline;
+    gap: 0;
+  }
+
+  .skill-chip svg {
+    display: none;
   }
 
   .skill-chip:not(:last-child)::after {

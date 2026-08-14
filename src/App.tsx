@@ -1,5 +1,6 @@
 import { MotionConfig } from "framer-motion";
 import { NavBar } from "@/components/layout/NavBar";
+import { PageOrbs } from "@/components/layout/PageOrbs";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Contact } from "@/components/sections/Contact";
 import { Education } from "@/components/sections/Education";
@@ -23,9 +24,7 @@ export function App() {
     <SmoothScroll>
       <MotionConfig reducedMotion="user">
         <div className="relative min-h-screen bg-bg text-label">
-          <div className="page-orbs print:hidden" aria-hidden="true">
-            <span />
-          </div>
+          <PageOrbs />
           <div className="relative z-1">
             <NavBar resume={resume} />
             <main className="page mx-auto flex max-w-5xl flex-col gap-16 px-5 pt-12 pb-24 md:gap-20 md:pt-16">

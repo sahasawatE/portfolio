@@ -7,6 +7,13 @@
   --label: #1d1d1f;
   --secondary: rgba(60, 60, 67, 0.6);
   --blue: #007aff;
+  --purple: #af52de;
+  --green: #34c759;
+  --orange: #ff9500;
+  --pink: #ff2d55;
+  --teal: #30b0c7;
+  --indigo: #5856d6;
+  --lime: #65a30d;
   --separator: rgba(60, 60, 67, 0.12);
   --gray6: #f2f2f7;
   --nav: rgba(255, 255, 255, 0.72);
@@ -22,6 +29,13 @@
     --label: #f5f5f7;
     --secondary: rgba(235, 235, 245, 0.6);
     --blue: #0a84ff;
+    --purple: #bf5af2;
+    --green: #30d158;
+    --orange: #ff9f0a;
+    --pink: #ff375f;
+    --teal: #64d2ff;
+    --indigo: #5e5ce6;
+    --lime: #a3e635;
     --separator: rgba(84, 84, 88, 0.65);
     --gray6: #2c2c2e;
     --nav: rgba(28, 28, 30, 0.72);
@@ -38,6 +52,13 @@
   --color-label: var(--label);
   --color-secondary: var(--secondary);
   --color-blue: var(--blue);
+  --color-purple: var(--purple);
+  --color-green: var(--green);
+  --color-orange: var(--orange);
+  --color-pink: var(--pink);
+  --color-teal: var(--teal);
+  --color-indigo: var(--indigo);
+  --color-lime: var(--lime);
   --color-separator: var(--separator);
   --color-gray6: var(--gray6);
   --color-nav: var(--nav);
@@ -65,6 +86,7 @@ body {
 }
 
 .page-orbs {
+  --scroll: 0;
   pointer-events: none;
   position: fixed;
   inset: 0;
@@ -72,41 +94,50 @@ body {
   overflow: hidden;
 }
 
-.page-orbs::before,
-.page-orbs::after,
 .page-orbs span {
   position: absolute;
   border-radius: 50%;
   filter: blur(90px);
+  will-change: transform;
 }
 
-.page-orbs::before,
-.page-orbs::after {
-  content: "";
-}
-
-.page-orbs::before {
+.page-orbs span:nth-child(1) {
   width: min(46vw, 34rem);
   height: min(46vw, 34rem);
   top: -10%;
   left: -8%;
   background: color-mix(in srgb, var(--blue) 30%, transparent);
+  transform: translate3d(
+    calc(var(--scroll) * 0.05px),
+    calc(var(--scroll) * 0.08px),
+    0
+  );
 }
 
-.page-orbs::after {
+.page-orbs span:nth-child(2) {
   width: min(40vw, 30rem);
   height: min(40vw, 30rem);
   right: -10%;
   top: 22%;
   background: color-mix(in srgb, #af52de 20%, transparent);
+  transform: translate3d(
+    calc(var(--scroll) * -0.07px),
+    calc(var(--scroll) * -0.04px),
+    0
+  );
 }
 
-.page-orbs span {
+.page-orbs span:nth-child(3) {
   width: min(36vw, 26rem);
   height: min(36vw, 26rem);
   left: 28%;
   bottom: -12%;
   background: color-mix(in srgb, #64d2ff 16%, transparent);
+  transform: translate3d(
+    calc(var(--scroll) * 0.03px),
+    calc(var(--scroll) * -0.1px),
+    0
+  );
 }
 
 .glass-panel {
@@ -143,6 +174,11 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .page-orbs span:nth-child(n) {
+    transform: none;
+    will-change: auto;
+  }
+
   .glass-panel {
     background: color-mix(in srgb, var(--surface) 72%, transparent);
   }
