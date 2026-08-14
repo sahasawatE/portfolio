@@ -3,6 +3,8 @@
 
 :root {
   --bg: #f2f2f7;
+  --bg-accent: #e8e8ed;
+  --weather-glass-boost: 1;
   --surface: #ffffff;
   --label: #1d1d1f;
   --secondary: rgba(60, 60, 67, 0.6);
@@ -20,6 +22,9 @@
   --print-accent: #1f2937;
   --glass-border: color-mix(in srgb, #ffffff 70%, var(--label) 12%);
   --glass-highlight: color-mix(in srgb, #ffffff 78%, transparent);
+  --orb-1: color-mix(in srgb, var(--blue) 30%, transparent);
+  --orb-2: color-mix(in srgb, #af52de 20%, transparent);
+  --orb-3: color-mix(in srgb, #64d2ff 16%, transparent);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -83,6 +88,162 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.8s ease;
+}
+
+.weather-atmosphere {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.weather-wash {
+  position: absolute;
+  inset: -10%;
+  background:
+    radial-gradient(ellipse 80% 55% at 20% 15%, var(--bg-accent), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 75%, color-mix(in srgb, var(--bg-accent) 70%, transparent), transparent 55%),
+    linear-gradient(165deg, var(--bg-accent), var(--bg) 55%, color-mix(in srgb, var(--bg) 88%, #000 12%));
+  transition: background 0.8s ease;
+}
+
+.weather-sun {
+  position: absolute;
+  top: 8%;
+  right: 12%;
+  width: min(28vw, 14rem);
+  height: min(28vw, 14rem);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, currentColor 70%, #fff) 0%,
+    color-mix(in srgb, currentColor 35%, transparent) 42%,
+    transparent 70%
+  );
+  animation: weather-sun-pulse 8s ease-in-out infinite;
+}
+
+.weather-stars span {
+  position: absolute;
+  border-radius: 50%;
+  animation: weather-twinkle 3.6s ease-in-out infinite;
+}
+
+.weather-haze {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(ellipse 50% 30% at 30% 35%, rgba(255, 255, 255, 0.35), transparent 70%),
+    radial-gradient(ellipse 45% 28% at 70% 45%, rgba(255, 255, 255, 0.28), transparent 70%),
+    radial-gradient(ellipse 40% 24% at 50% 70%, rgba(255, 255, 255, 0.2), transparent 70%);
+  filter: blur(28px);
+  animation: weather-haze-drift 28s ease-in-out infinite alternate;
+}
+
+.weather-haze.is-fog {
+  opacity: 0.85;
+  filter: blur(40px);
+  animation-duration: 40s;
+}
+
+.weather-rain span {
+  position: absolute;
+  top: -20px;
+  width: 1.5px;
+  border-radius: 1px;
+  animation-name: weather-rain-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.weather-flash {
+  position: absolute;
+  inset: 0;
+  background: rgba(210, 220, 255, 0.35);
+  opacity: 0;
+  animation: weather-flash 7s ease-in-out infinite;
+}
+
+.weather-snow span {
+  position: absolute;
+  top: -10px;
+  border-radius: 50%;
+  animation-name: weather-snow-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes weather-sun-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes weather-twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes weather-haze-drift {
+  from {
+    transform: translate3d(-3%, 1%, 0);
+  }
+  to {
+    transform: translate3d(4%, -2%, 0);
+  }
+}
+
+@keyframes weather-rain-fall {
+  from {
+    transform: translate3d(0, -10vh, 0);
+  }
+  to {
+    transform: translate3d(8px, 110vh, 0);
+  }
+}
+
+@keyframes weather-snow-fall {
+  from {
+    transform: translate3d(0, -10vh, 0);
+  }
+  to {
+    transform: translate3d(var(--drift, 20px), 110vh, 0);
+  }
+}
+
+@keyframes weather-flash {
+  0%,
+  88%,
+  100% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0.55;
+  }
+  92% {
+    opacity: 0.08;
+  }
+  94% {
+    opacity: 0.4;
+  }
+  96% {
+    opacity: 0;
+  }
 }
 
 .page-orbs {
@@ -99,6 +260,7 @@ body {
   border-radius: 50%;
   filter: blur(90px);
   will-change: transform;
+  transition: background 0.8s ease;
 }
 
 .page-orbs span:nth-child(1) {
@@ -106,7 +268,7 @@ body {
   height: min(46vw, 34rem);
   top: -10%;
   left: -8%;
-  background: color-mix(in srgb, var(--blue) 30%, transparent);
+  background: var(--orb-1);
   transform: translate3d(
     calc(var(--scroll) * 0.05px),
     calc(var(--scroll) * 0.08px),
@@ -119,7 +281,7 @@ body {
   height: min(40vw, 30rem);
   right: -10%;
   top: 22%;
-  background: color-mix(in srgb, #af52de 20%, transparent);
+  background: var(--orb-2);
   transform: translate3d(
     calc(var(--scroll) * -0.07px),
     calc(var(--scroll) * -0.04px),
@@ -132,7 +294,7 @@ body {
   height: min(36vw, 26rem);
   left: 28%;
   bottom: -12%;
-  background: color-mix(in srgb, #64d2ff 16%, transparent);
+  background: var(--orb-3);
   transform: translate3d(
     calc(var(--scroll) * 0.03px),
     calc(var(--scroll) * -0.1px),
@@ -155,17 +317,19 @@ body {
 }
 
 .glass-backdrop {
-  --glass-blur: 2px;
+  --glass-blur: calc(2px * var(--weather-glass-boost));
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  backdrop-filter: blur(var(--glass-blur)) saturate(220%);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(220%);
+  backdrop-filter: blur(var(--glass-blur))
+    saturate(calc(220% * var(--weather-glass-boost)));
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(calc(220% * var(--weather-glass-boost)));
 }
 
 .site-nav .glass-backdrop {
-  --glass-blur: 3px;
+  --glass-blur: calc(3px * var(--weather-glass-boost));
 }
 
 .glass-content {
@@ -179,6 +343,15 @@ body {
     will-change: auto;
   }
 
+  .weather-sun,
+  .weather-stars span,
+  .weather-haze,
+  .weather-rain span,
+  .weather-snow span,
+  .weather-flash {
+    animation: none !important;
+  }
+
   .glass-panel {
     background: color-mix(in srgb, var(--surface) 72%, transparent);
   }
@@ -190,7 +363,8 @@ body {
 }
 
 @media print {
-  .page-orbs {
+  .page-orbs,
+  .weather-atmosphere {
     display: none;
   }
 }
