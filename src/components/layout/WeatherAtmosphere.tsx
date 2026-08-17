@@ -15,6 +15,36 @@ const CLOUD_BANK = {
   height: 538,
 } as const;
 
+const THUNDER_TALL = {
+  src: publicUrl("/media/weather-thunder1.png"),
+  width: 650,
+  height: 1137,
+} as const;
+
+const THUNDER_LEAN = {
+  src: publicUrl("/media/weather-thunder2.png"),
+  width: 650,
+  height: 1137,
+} as const;
+
+const SUN = {
+  src: publicUrl("/media/weather-sun.png"),
+  width: 600,
+  height: 600,
+} as const;
+
+const FOG_WIDE = {
+  src: publicUrl("/media/weather-fog1.png"),
+  width: 2000,
+  height: 1747,
+} as const;
+
+const FOG_WISP = {
+  src: publicUrl("/media/weather-fog2.png"),
+  width: 1199,
+  height: 378,
+} as const;
+
 type WeatherAtmosphereProps = {
   theme: WeatherTheme;
 };
@@ -43,13 +73,22 @@ export function WeatherAtmosphere({ theme }: WeatherAtmosphereProps) {
 
   const drops = useMemo(() => {
     if (lite) return [];
-    const count = kind === "drizzle" ? 16 : kind === "rain" || kind === "thunder" ? 20 : 0;
+    const drizzle = kind === "drizzle";
+    const raining = kind === "rain" || kind === "thunder";
+    if (!drizzle && !raining) return [];
+    const count = drizzle ? 42 : 26;
     return Array.from({ length: count }, (_, i) => ({
       left: `${seeded(i, 1) * 100}%`,
-      delay: `${seeded(i, 2) * 1.4}s`,
-      duration: `${0.55 + seeded(i, 3) * 0.7}s`,
-      height: `${10 + seeded(i, 4) * 16}px`,
-      opacity: 0.25 + seeded(i, 5) * 0.45,
+      delay: `${seeded(i, 2) * (drizzle ? 2.4 : 1.4)}s`,
+      duration: drizzle
+        ? `${1.6 + seeded(i, 3) * 1.4}s`
+        : `${0.5 + seeded(i, 3) * 0.55}s`,
+      height: drizzle
+        ? `${4 + seeded(i, 4) * 6}px`
+        : `${28 + seeded(i, 4) * 24}px`,
+      opacity: drizzle
+        ? 0.18 + seeded(i, 5) * 0.28
+        : 0.35 + seeded(i, 5) * 0.45,
     }));
   }, [kind, lite]);
 
@@ -132,6 +171,42 @@ export function WeatherAtmosphere({ theme }: WeatherAtmosphereProps) {
     ];
   }, [kind, isDay, lite]);
 
+  const fogLayers = useMemo(() => {
+    if (lite || kind !== "fog") return [];
+    const dense = isDay ? 0.78 : 0.46;
+    const mid = isDay ? 0.58 : 0.34;
+    const soft = isDay ? 0.5 : 0.3;
+    return [
+      {
+        ...FOG_WIDE,
+        left: "-22%",
+        top: "-12%",
+        size: "min(118vw, 76rem)",
+        opacity: dense,
+        delay: "-10s",
+        duration: "42s",
+      },
+      {
+        ...FOG_WISP,
+        left: "4%",
+        top: "30%",
+        size: "min(96vw, 58rem)",
+        opacity: mid,
+        delay: "-24s",
+        duration: "54s",
+      },
+      {
+        ...FOG_WIDE,
+        left: "-16%",
+        top: "46%",
+        size: "min(124vw, 82rem)",
+        opacity: soft,
+        delay: "-40s",
+        duration: "64s",
+      },
+    ];
+  }, [kind, isDay, lite]);
+
   return (
     <div
       className="weather-atmosphere print:hidden"
@@ -142,7 +217,15 @@ export function WeatherAtmosphere({ theme }: WeatherAtmosphereProps) {
       <div className="weather-wash" />
 
       {!lite && kind === "clear" && isDay ? (
-        <div className="weather-sun" style={{ color: particle }} />
+        <img
+          className="weather-sun"
+          src={SUN.src}
+          alt=""
+          width={SUN.width}
+          height={SUN.height}
+          decoding="async"
+          draggable={false}
+        />
       ) : null}
 
       {stars.length > 0 ? (
@@ -194,7 +277,37 @@ export function WeatherAtmosphere({ theme }: WeatherAtmosphereProps) {
         </div>
       ) : null}
 
-      {!lite && kind === "fog" ? <div className="weather-haze is-fog" /> : null}
+      {fogLayers.length > 0 ? (
+        <>
+          <div className="weather-haze is-fog" />
+          <div className="weather-fog">
+            {fogLayers.map((f, i) => (
+              <img
+                key={i}
+                className="weather-fog-layer"
+                src={f.src}
+                alt=""
+                width={f.width}
+                height={f.height}
+                decoding="async"
+                draggable={false}
+                style={{
+                  left: f.left,
+                  top: f.top,
+                  width: f.size,
+                  opacity: f.opacity,
+                  animationDelay: f.delay,
+                  animationDuration: f.duration,
+                }}
+              />
+            ))}
+          </div>
+        </>
+      ) : null}
+
+      {!lite && kind === "drizzle" ? (
+        <div className="weather-haze is-drizzle" />
+      ) : null}
 
       {drops.length > 0 ? (
         <div className="weather-rain">
@@ -217,48 +330,31 @@ export function WeatherAtmosphere({ theme }: WeatherAtmosphereProps) {
       {!lite && kind === "thunder" ? (
         <>
           <div className="weather-flash" />
-          <svg
+          <img
             className="weather-bolt"
-            viewBox="0 0 48 180"
-            style={{ left: "22%", top: "8%", width: "4.5rem" }}
-          >
-            <polyline
-              points="26,0 18,46 32,52 12,104 24,110 8,180"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.4"
-              strokeLinejoin="miter"
-              strokeLinecap="round"
-            />
-            <polyline
-              points="26,0 18,46 32,52 12,104"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="5"
-              opacity="0.32"
-            />
-          </svg>
-          <svg
+            src={THUNDER_TALL.src}
+            alt=""
+            width={THUNDER_TALL.width}
+            height={THUNDER_TALL.height}
+            decoding="async"
+            draggable={false}
+            style={{ left: "6%", top: "-6%", width: "min(42vw, 20rem)" }}
+          />
+          <img
             className="weather-bolt"
-            viewBox="0 0 48 180"
-            style={{ left: "68%", top: "4%", width: "3.4rem" }}
-          >
-            <polyline
-              points="20,0 28,40 14,48 30,96 16,104 34,180"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinejoin="miter"
-              strokeLinecap="round"
-            />
-            <polyline
-              points="20,0 28,40 14,48 30,96"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="4.6"
-              opacity="0.3"
-            />
-          </svg>
+            src={THUNDER_LEAN.src}
+            alt=""
+            width={THUNDER_LEAN.width}
+            height={THUNDER_LEAN.height}
+            decoding="async"
+            draggable={false}
+            style={{
+              left: "54%",
+              top: "-10%",
+              width: "min(34vw, 16rem)",
+              animationDelay: "1.8s",
+            }}
+          />
         </>
       ) : null}
 

@@ -108,17 +108,14 @@ body {
 
 .weather-sun {
   position: absolute;
-  top: 8%;
-  right: 12%;
-  width: min(28vw, 14rem);
-  height: min(28vw, 14rem);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    color-mix(in srgb, currentColor 70%, #fff) 0%,
-    color-mix(in srgb, currentColor 35%, transparent) 42%,
-    transparent 70%
-  );
+  top: -4%;
+  right: -2%;
+  width: min(56vw, 28rem);
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: screen;
   animation: weather-sun-pulse 8s ease-in-out infinite;
 }
 
@@ -139,8 +136,44 @@ body {
 }
 
 .weather-haze.is-fog {
-  opacity: 0.85;
+  opacity: 0.95;
   animation-duration: 40s;
+  background:
+    radial-gradient(ellipse 70% 40% at 25% 30%, rgba(236, 238, 242, 0.55), transparent 70%),
+    radial-gradient(ellipse 65% 38% at 75% 48%, rgba(220, 224, 230, 0.48), transparent 70%),
+    radial-gradient(ellipse 80% 36% at 50% 78%, rgba(210, 214, 220, 0.5), transparent 72%),
+    linear-gradient(180deg, rgba(200, 204, 210, 0.22), rgba(190, 194, 200, 0.38));
+}
+
+.weather-atmosphere[data-day="0"] .weather-haze.is-fog {
+  background:
+    radial-gradient(ellipse 70% 40% at 25% 30%, rgba(90, 94, 102, 0.45), transparent 70%),
+    radial-gradient(ellipse 65% 38% at 75% 48%, rgba(70, 74, 82, 0.4), transparent 70%),
+    radial-gradient(ellipse 80% 36% at 50% 78%, rgba(58, 62, 70, 0.42), transparent 72%),
+    linear-gradient(180deg, rgba(40, 44, 50, 0.28), rgba(28, 30, 34, 0.4));
+}
+
+.weather-haze.is-drizzle {
+  opacity: 0.45;
+  animation-duration: 32s;
+}
+
+.weather-fog {
+  position: absolute;
+  inset: 0;
+}
+
+.weather-fog-layer {
+  position: absolute;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: screen;
+  animation-name: weather-haze-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 .weather-clouds {
@@ -174,11 +207,17 @@ body {
 .weather-rain span {
   position: absolute;
   top: -20px;
-  width: 1.5px;
-  border-radius: 1px;
+  width: 3px;
+  border-radius: 2px;
   animation-name: weather-rain-fall;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+}
+
+.weather-atmosphere[data-kind="drizzle"] .weather-rain span {
+  width: 1px;
+  border-radius: 1px;
+  animation-name: weather-drizzle-fall;
 }
 
 .weather-flash {
@@ -192,9 +231,11 @@ body {
 .weather-bolt {
   position: absolute;
   height: auto;
-  color: #e8eeff;
+  object-fit: contain;
+  mix-blend-mode: screen;
   opacity: 0;
   pointer-events: none;
+  user-select: none;
   animation: weather-flash 7s ease-in-out infinite;
 }
 
@@ -211,10 +252,10 @@ body {
   0%,
   100% {
     transform: scale(1);
-    opacity: 0.75;
+    opacity: 0.82;
   }
   50% {
-    transform: scale(1.08);
+    transform: scale(1.06);
     opacity: 1;
   }
 }
@@ -256,7 +297,16 @@ body {
     transform: translate3d(0, -10vh, 0);
   }
   to {
-    transform: translate3d(8px, 110vh, 0);
+    transform: translate3d(16px, 110vh, 0);
+  }
+}
+
+@keyframes weather-drizzle-fall {
+  from {
+    transform: translate3d(0, -10vh, 0);
+  }
+  to {
+    transform: translate3d(4px, 110vh, 0);
   }
 }
 
@@ -333,6 +383,7 @@ body {
 html.weather-paused .weather-sun,
 html.weather-paused .weather-stars span,
 html.weather-paused .weather-haze,
+html.weather-paused .weather-fog-layer,
 html.weather-paused .weather-cloud,
 html.weather-paused .weather-rain span,
 html.weather-paused .weather-snow span,
@@ -345,6 +396,7 @@ html.weather-paused .weather-bolt {
   .weather-sun,
   .weather-stars span,
   .weather-haze,
+  .weather-fog-layer,
   .weather-cloud,
   .weather-rain span,
   .weather-snow span,

@@ -92,7 +92,21 @@ export function themeFor(kind: WeatherKind, isDay: boolean): WeatherTheme {
     };
   }
 
-  if (kind === "rain" || kind === "drizzle") {
+  if (kind === "drizzle") {
+    return {
+      kind,
+      isDay,
+      label,
+      bg: isDay ? "#a8b8c4" : "#121820",
+      bgAccent: isDay ? "#c4d0d8" : "#1e2a34",
+      particle: isDay
+        ? "rgba(255, 255, 255, 0.42)"
+        : "rgba(190, 214, 230, 0.38)",
+      glassBoost: 1.05,
+    };
+  }
+
+  if (kind === "rain") {
     return {
       kind,
       isDay,
