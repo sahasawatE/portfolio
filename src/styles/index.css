@@ -374,6 +374,96 @@ body {
   z-index: 1;
 }
 
+html.has-liquid-cursor {
+  cursor: none;
+}
+
+html.has-liquid-cursor :is(a, button, [role="button"], [role="link"], label[for], summary),
+html.has-liquid-cursor :is(a, button, [role="button"], [role="link"], label[for], summary) * {
+  cursor: pointer !important;
+}
+
+html.has-liquid-cursor :is(input, textarea, select, [contenteditable="true"]) {
+  cursor: text !important;
+}
+
+html.has-liquid-cursor :is(
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="file"],
+  input[type="color"],
+  input[type="range"],
+  input[type="image"]
+) {
+  cursor: pointer !important;
+}
+
+.liquid-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 400;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.liquid-cursor-lens {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: color-mix(in srgb, #ffffff 4%, transparent);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    inset 0 -1px 0 color-mix(in srgb, var(--label) 6%, transparent);
+  transform: scale(0.35);
+  opacity: 0;
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.3, 0.64, 1),
+    opacity 0.2s ease;
+}
+
+.liquid-cursor.is-visible .liquid-cursor-lens {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.liquid-cursor-lens.is-bouncing {
+  animation: liquid-cursor-bounce 0.42s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+@keyframes liquid-cursor-bounce {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(0.82);
+  }
+  70% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.liquid-cursor-highlight {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 42% 28% at 32% 24%,
+    rgba(255, 255, 255, 0.38),
+    transparent 70%
+  );
+}
+
 .section-block,
 .contact-block {
   content-visibility: auto;
@@ -416,8 +506,14 @@ html.weather-paused .weather-bolt {
 }
 
 @media print {
-  .weather-atmosphere {
+  .weather-atmosphere,
+  .liquid-cursor {
     display: none;
+  }
+
+  html.has-liquid-cursor,
+  html.has-liquid-cursor * {
+    cursor: auto !important;
   }
 }
 

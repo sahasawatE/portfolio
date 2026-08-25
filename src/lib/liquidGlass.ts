@@ -11,6 +11,8 @@ export type LiquidGlassMaps = {
   specular: string;
 };
 
+export type LiquidGlassShape = "rounded-box" | "drop";
+
 type MapInput = {
   width: number;
   height: number;
@@ -18,6 +20,7 @@ type MapInput = {
   bezel?: number;
   thickness?: number;
   scaleRatio?: number;
+  shape?: LiquidGlassShape;
 };
 
 const DEFAULT_BEZEL = 100;
@@ -25,7 +28,10 @@ const DEFAULT_THICKNESS = 100;
 const DEFAULT_SCALE_RATIO = 0.7;
 
 const MAP_MAX_SIDE = 360;
-const CACHE_LIMIT = 4;
+const CACHE_LIMIT = 6;
+
+export const DROP_CURSOR_WIDTH = 160;
+export const DROP_CURSOR_HEIGHT = 160;
 
 const cache = new Map<string, LiquidGlassMaps>();
 const inflight = new Map<string, Promise<LiquidGlassMaps | null>>();
@@ -117,7 +123,10 @@ function refractDisplacement(
   return Math.abs((Tx * -h) / Tz);
 }
 
-function precomputeMagnitudes(bezel: number, thickness: number): {
+function precomputeMagnitudes(
+  bezel: number,
+  thickness: number,
+): {
   normalized: Float64Array;
   scale: number;
 } {
@@ -163,6 +172,31 @@ function sdRoundedBox(
   );
 }
 
+/** Circle SDF in pixel space. Negative inside. */
+function sdCircle(
+  px: number,
+  py: number,
+  width: number,
+  height: number,
+): number {
+  const cx = width * 0.5;
+  const cy = height * 0.5;
+  const r = Math.min(width, height) * 0.5;
+  return Math.hypot(px - cx, py - cy) - r;
+}
+
+function sdfAt(
+  shape: LiquidGlassShape,
+  px: number,
+  py: number,
+  width: number,
+  height: number,
+  radius: number,
+): number {
+  if (shape === "drop") return sdCircle(px, py, width, height);
+  return sdRoundedBox(px, py, width, height, radius);
+}
+
 function imageDataToBlobUrl(image: ImageData): Promise<string> {
   return new Promise((resolve) => {
     const canvas = document.createElement("canvas");
@@ -186,6 +220,7 @@ function paintMaps(
   radius: number,
   bezel: number,
   table: Float64Array,
+  shape: LiquidGlassShape,
 ): { displacement: ImageData; specular: ImageData } {
   const displacement = new ImageData(width, height);
   const specular = new ImageData(width, height);
@@ -194,11 +229,16 @@ function paintMaps(
   const lx = Math.cos(LIGHT_ANGLE);
   const ly = Math.sin(LIGHT_ANGLE);
   const eps = 0.6;
+  const ocx = width * 0.5;
+  const ocy = height * 0.5;
+  const maxR = Math.min(width, height) * 0.5;
 
   for (let y = 0; y < height; y += 1) {
     for (let x = 0; x < width; x += 1) {
       const i = (y * width + x) * 4;
-      const sd = sdRoundedBox(x + 0.5, y + 0.5, width, height, radius);
+      const px = x + 0.5;
+      const py = y + 0.5;
+      const sd = sdfAt(shape, px, py, width, height, radius);
 
       d[i] = 128;
       d[i + 1] = 128;
@@ -212,26 +252,50 @@ function paintMaps(
       if (sd > 0.5) continue;
 
       const inward = Math.max(0, -sd);
-      if (inward >= bezel) continue;
-
       const gx =
-        sdRoundedBox(x + 0.5 + eps, y + 0.5, width, height, radius) -
-        sdRoundedBox(x + 0.5 - eps, y + 0.5, width, height, radius);
+        sdfAt(shape, px + eps, py, width, height, radius) -
+        sdfAt(shape, px - eps, py, width, height, radius);
       const gy =
-        sdRoundedBox(x + 0.5, y + 0.5 + eps, width, height, radius) -
-        sdRoundedBox(x + 0.5, y + 0.5 - eps, width, height, radius);
+        sdfAt(shape, px, py + eps, width, height, radius) -
+        sdfAt(shape, px, py - eps, width, height, radius);
       const glen = Math.hypot(gx, gy) || 1;
       const inx = -gx / glen;
       const iny = -gy / glen;
-
-      const t = inward / bezel;
-      const mag = sampleMagnitude(table, t);
-      d[i] = Math.round(128 + inx * mag * 127);
-      d[i + 1] = Math.round(128 + iny * mag * 127);
+      const t = bezel > 0 ? Math.min(1, inward / bezel) : 1;
 
       const ndotl = Math.max(0, -inx * lx - iny * ly);
       const rim = ndotl ** 6 * (1 - t) ** 1.2;
       s[i + 3] = Math.round(Math.min(1, rim) * 255);
+
+      if (shape === "drop") {
+        const rdx = px - ocx;
+        const rdy = py - ocy;
+        const dist = Math.hypot(rdx, rdy);
+        const u = Math.min(1, dist / Math.max(maxR, 1));
+        const lensAmt = u * u * (0.35 + 0.65 * u);
+        const inv = dist > 1e-3 ? 1 / dist : 0;
+        let mx = -rdx * inv * lensAmt;
+        let my = -rdy * inv * lensAmt;
+        if (inward < bezel) {
+          const mag = sampleMagnitude(table, t);
+          mx += inx * mag * 0.45;
+          my += iny * mag * 0.45;
+        }
+        const len = Math.hypot(mx, my);
+        if (len > 1) {
+          mx /= len;
+          my /= len;
+        }
+        d[i] = Math.round(128 + mx * 127);
+        d[i + 1] = Math.round(128 + my * 127);
+        continue;
+      }
+
+      if (inward >= bezel) continue;
+
+      const mag = sampleMagnitude(table, t);
+      d[i] = Math.round(128 + inx * mag * 127);
+      d[i + 1] = Math.round(128 + iny * mag * 127);
     }
   }
 
@@ -245,6 +309,7 @@ export function getLiquidGlassMaps({
   bezel: bezelInput = DEFAULT_BEZEL,
   thickness = DEFAULT_THICKNESS,
   scaleRatio = DEFAULT_SCALE_RATIO,
+  shape = "rounded-box",
 }: MapInput): Promise<LiquidGlassMaps | null> {
   const displayW = Math.round(width);
   const displayH = Math.round(height);
@@ -257,7 +322,7 @@ export function getLiquidGlassMaps({
     displayH * 0.5,
   );
   const displayBezel = Math.min(bezelInput, Math.min(displayW, displayH) / 2);
-  const key = `${displayW}x${displayH}p${w}x${h}r${Math.round(displayR)}b${displayBezel}t${thickness}s${scaleRatio}`;
+  const key = `${shape}:${displayW}x${displayH}p${w}x${h}r${Math.round(displayR)}b${displayBezel}t${thickness}s${scaleRatio}`;
   const hit = cacheGet(key);
   if (hit) return Promise.resolve(hit);
 
@@ -265,24 +330,33 @@ export function getLiquidGlassMaps({
   if (pending) return pending;
 
   const { normalized, scale } = precomputeMagnitudes(displayBezel, thickness);
-  const painted = paintMaps(w, h, displayR * ratio, displayBezel * ratio, normalized);
+  const painted = paintMaps(
+    w,
+    h,
+    displayR * ratio,
+    displayBezel * ratio,
+    normalized,
+    shape,
+  );
   const build = Promise.all([
     imageDataToBlobUrl(painted.displacement),
     imageDataToBlobUrl(painted.specular),
-  ]).then(([displacement, specular]) => {
-    if (!displacement || !specular) return null;
-    const maps: LiquidGlassMaps = {
-      width: displayW,
-      height: displayH,
-      scale: scale * scaleRatio,
-      displacement,
-      specular,
-    };
-    cacheSet(key, maps);
-    return maps;
-  }).finally(() => {
-    inflight.delete(key);
-  });
+  ])
+    .then(([displacement, specular]) => {
+      if (!displacement || !specular) return null;
+      const maps: LiquidGlassMaps = {
+        width: displayW,
+        height: displayH,
+        scale: scale * scaleRatio,
+        displacement,
+        specular,
+      };
+      cacheSet(key, maps);
+      return maps;
+    })
+    .finally(() => {
+      inflight.delete(key);
+    });
 
   inflight.set(key, build);
   return build;
