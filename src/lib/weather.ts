@@ -194,30 +194,13 @@ export function fallbackWeather(isDay = true): WeatherSnapshot {
   };
 }
 
-async function resolveCoords(): Promise<{ lat: number; lon: number }> {
-  if (!("geolocation" in navigator)) return BANGKOK;
-
-  try {
-    const pos = await new Promise<GeolocationPosition>((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject, {
-        enableHighAccuracy: false,
-        timeout: 4000,
-        maximumAge: 30 * 60_000,
-      });
-    });
-    return { lat: pos.coords.latitude, lon: pos.coords.longitude };
-  } catch {
-    return BANGKOK;
-  }
-}
-
 export async function fetchWeather(): Promise<WeatherSnapshot> {
   const hour = new Date().getHours();
   const guessDay = hour >= 6 && hour < 19;
   const base = fallbackWeather(guessDay);
 
   try {
-    const { lat, lon } = await resolveCoords();
+    const { lat, lon } = BANGKOK;
     const url = new URL("https://api.open-meteo.com/v1/forecast");
     url.searchParams.set("latitude", String(lat));
     url.searchParams.set("longitude", String(lon));

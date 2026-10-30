@@ -23,6 +23,17 @@
       "items": [
         {
           "company": "Abbot Technology",
+          "role": "Project Manager",
+          "location": "Bangkok, Thailand",
+          "start": "2026",
+          "end": "present",
+          "highlights": [
+            "Managed delivery of two electronic data-collection tools for สธ. and ศูนย์วิจัยแม่และเด็ก, covering maternal and child health records: an analytic-hierarchy questionnaire with pairwise comparison and a consistency check before save, and a multi-round e-Delphi questionnaire with median, interquartile range, and consensus feedback.",
+            "The tools give each expert access to their assigned questionnaire, an admin view of who has responded, and Excel or CSV export."
+          ]
+        },
+        {
+          "company": "Abbot Technology",
           "role": "Frontend Developer",
           "location": "Bangkok, Thailand",
           "start": "Apr 2023",

@@ -9,6 +9,7 @@ import { Experience } from "@/components/sections/Experience";
 import { Hero } from "@/components/sections/Hero";
 import { Projects } from "@/components/sections/Projects";
 import { Skills } from "@/components/sections/Skills";
+import { LaptopNotice } from "@/components/ui/LaptopNotice";
 import { LiquidCursor } from "@/components/ui/LiquidCursor";
 import { useWeather } from "@/hooks/useWeather";
 import resumeData from "@/data/resume.json";
@@ -38,6 +39,7 @@ export function App() {
       <MotionConfig reducedMotion="user">
         <div className="relative min-h-screen text-label">
           <LiquidCursor />
+          <LaptopNotice />
           <WeatherAtmosphere theme={weather.theme} />
           <div className="relative z-1">
             <NavBar resume={resume} />

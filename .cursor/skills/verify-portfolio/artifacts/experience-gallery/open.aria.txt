@@ -1,0 +1,23 @@
+feature: experience-gallery
+run: verify-1
+port: 5173
+url: http://127.0.0.1:5173/portfolio/?weather=clear&day=1
+entry: Bitkub thumbnail, alt "UX/UI Designer (intern) at Bitkub 1"
+
+Action: click the unnamed snapshot button whose img alt is that string.
+Result while open, before ArrowRight:
+- body overflow hidden
+- one .fixed.inset-0
+- enlarged img alt "UX/UI Designer (intern) at Bitkub 1"
+- enlarged src /portfolio/media/bitkub.jpg
+- natural size  the certificate image loaded
+
+Action: ArrowRight
+Result:
+- enlarged alt "UX/UI Designer (intern) at Bitkub 2"
+- enlarged src /portfolio/media/figma.jpg
+- rendered about 896 by 470
+- natural 1400 by 735
+- thumbnails for alt 1 and alt 2 remain at 256 by 176
+
+The accessibility snapshot does not list img nodes. Page title stayed Sahasawat Uengwanitchaphan. Footer did not contain "Outside:".

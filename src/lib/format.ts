@@ -8,7 +8,8 @@ export function dateRange(start?: string, end?: string) {
 export function parseResumeDate(value?: string) {
   if (!value) return 0;
   if (value.toLowerCase() === "present") return Number.POSITIVE_INFINITY;
-  const time = Date.parse(`1 ${value}`);
+  const year = /^(\d{4})$/.exec(value);
+  const time = Date.parse(year ? `1 Jan ${year[1]}` : `1 ${value}`);
   return Number.isNaN(time) ? 0 : time;
 }
 

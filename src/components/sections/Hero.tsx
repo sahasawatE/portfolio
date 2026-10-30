@@ -102,6 +102,7 @@ export function Hero({ basics, education }: HeroProps) {
           width={176}
           height={176}
           decoding="async"
+          fetchPriority="high"
           initial={{ opacity: 0, scale: 0.92, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 260, damping: 22, delay: 0.18 }}

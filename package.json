@@ -8,7 +8,8 @@
     "dev": "vite",
     "pdf": "tsx scripts/render-resume-pdf.ts",
     "build": "tsc --noEmit && pnpm pdf && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "verify:markdown": "node scripts/run-verify-markdown.mjs"
   },
   "dependencies": {
     "framer-motion": "^13.1.0",
