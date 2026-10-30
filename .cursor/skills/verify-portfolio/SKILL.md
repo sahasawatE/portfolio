@@ -55,7 +55,7 @@ Doctor checks that the recorded pid is alive, its command is this run's Vite pro
 
 Use the Cursor IDE browser. Set a desktop viewport of 1280 by 800 before clicking. Below 640px the nav labels `Save as PDF` and `Download .md` are `display: none`, so those buttons have no accessible name. From 768px up, work history uses the desktop timeline; gallery button names stay the same at both widths.
 
-Prefer accessible names over coordinates. Icons are `aria-hidden`. There are no `data-testid` hooks. Gallery thumbnails are `button` elements, but the accessibility snapshot does not give them a name and does not list `img` nodes. Before clicking, read each button's `img` alt in document order with `Runtime.evaluate`. With the current resume and oldest-first sort, the unnamed buttons are Bitkub 1, Bitkub 2, part-time Abbot 1, then part-time Abbot 2. Re-read the alts if the JSON changes. Do not click by position alone.
+Prefer accessible names over coordinates. Icons are `aria-hidden`. There are no `data-testid` hooks. Gallery thumbnails are `button` elements, but the accessibility snapshot does not give them a name and does not list `img` nodes. Before clicking, read each button's `img` alt in document order with `Runtime.evaluate`. With the current resume and newest-first sort, the unnamed buttons are part-time Abbot 1, part-time Abbot 2, Bitkub 1, then Bitkub 2. Re-read the alts if the JSON changes. Do not click by position alone.
 
 Stable names from the current `src/data/resume.json`:
 

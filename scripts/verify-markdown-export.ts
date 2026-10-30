@@ -1,5 +1,6 @@
 import rawResume from "../src/data/resume.json";
 import { toMarkdown } from "../src/lib/exportMd.ts";
+import { compareExperienceNewestFirst } from "../src/lib/format.ts";
 import type {
   EducationSection,
   ExperienceSection,
@@ -266,7 +267,7 @@ function checkSection(section: ResumeSection, body: string, failures: string[]) 
   if (section.type === "experience") {
     expectRegions(
       body,
-      section.items.map((item) => ({
+      [...section.items].sort(compareExperienceNewestFirst).map((item) => ({
         heading: expectedHeading(
           joinTitle(item.role, item.company),
           expectedDate(item.start, item.end),
@@ -373,7 +374,7 @@ function verify() {
   console.log("ok");
   console.log(`Checked ${CASE_COUNT} generated resumes and src/data/resume.json.`);
   console.log(
-    "Property: every contact field, section, job, project name, school, skill, and highlight is in the markdown in resume order, with em-dash titles, en-dash dates, and a single project link folded into the heading.",
+    "Property: every contact field, section, job, project name, school, skill, and highlight is in the markdown, with work listed newest first, em-dash titles, en-dash dates, and a single project link folded into the heading.",
   );
   return 0;
 }

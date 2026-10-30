@@ -9,7 +9,7 @@ The portfolio's `Download .md` button writes `toMarkdown` over the resume object
 
 ## Property
 
-Every contact field, section, job, project name, school, skill, and highlight in the resume appears in the Markdown in resume order, with em-dash titles, en-dash dates, and a single project link folded into the heading.
+Every contact field, section, job, project name, school, skill, and highlight in the resume appears in the Markdown, with work listed newest first, em-dash titles, en-dash dates, and a single project link folded into the heading.
 
 ## Harm
 
@@ -54,7 +54,7 @@ A failure that quotes a snippet the checker invented, or that rejects a heading 
 - one project link, or a project URL with no links, becomes `[<name>](<url>)` in the heading
 - two or more project links keep the project name as the heading and emit `[<label>](<url>)` lines
 
-`parseResumeDate` is not used by the exporter. `Present` is ordinary text in a date field.
+The exporter sorts experience with `compareExperienceNewestFirst`, which uses `parseResumeDate`. `Present` stays the word present in the date text.
 
 ## Coverage
 
@@ -63,7 +63,7 @@ Confirmed against commit `bc1aeefa4ae58999ffa206a7f54111ca1cfceabf`.
 | Code | What the check calls |
 | --- | --- |
 | `src/lib/exportMd.ts` | `toMarkdown` and the writers, `contactLine`, `linkLine`, `bullets`, `heading`, `collapseBlankLines` |
-| `src/lib/format.ts` | `dateRange` |
+| `src/lib/format.ts` | `dateRange`, `compareExperienceNewestFirst` |
 | `src/data/resume.json` | one concrete case, plus 40 generated resumes |
 | `scripts/verify-markdown-export.ts` | the checker |
 | `scripts/run-verify-markdown.mjs` | esbuild 0.28.2 bundle and run |
@@ -75,7 +75,7 @@ Confirmed against commit `bc1aeefa4ae58999ffa206a7f54111ca1cfceabf`.
 - 40 generated resumes, indexes 0 through 39, plus `src/data/resume.json`. Case 0 has no sections. Other cases omit one section type on a fixed rotation.
 - Generated names, roles, highlights, and urls are short tokens, sometimes containing `# * [ ] ( ) _ \``. They do not contain newlines.
 - Each generated experience section has 1 to 3 jobs. Each included projects section has a one-link project, a two-link project, and a URL-only project.
-- Presence is exact heading and snippet text, in resume order. It is not a Markdown AST parse, and it does not prove that the text is safe to render.
+- Presence is exact heading and snippet text, in the order `toMarkdown` writes. Work is newest first. It is not a Markdown AST parse, and it does not prove that the text is safe to render.
 - One-link project labels that differ from the project name are not required. The heading uses the project name.
 - The check does not start a browser and does not prove the nav button.
 
@@ -83,7 +83,7 @@ A pass covers these inputs and this contract. It does not cover the whole site.
 
 ## Left out
 
-The on-page work list sorts with `parseResumeDate` in `src/components/sections/Experience.tsx` (oldest start first, `present` latest). `toMarkdown` keeps JSON order. In the current JSON that is newest job first. This check does not claim those orders match. PDF text, link icons, the download filename, and weather are out of scope too.
+The on-page work list, the public PDF, and `toMarkdown` sort experience with `compareExperienceNewestFirst` (later start first, then later end). Other sections stay in file order. Link icons, the download filename, and weather are out of scope.
 
 ## Update the sync commit
 

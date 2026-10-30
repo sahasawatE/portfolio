@@ -1,6 +1,6 @@
 import { normalizeLinks } from "@/lib/links";
 import type { Resume, ResumeLink, ResumeSection } from "@/types/resume";
-import { dateRange } from "./format";
+import { compareExperienceNewestFirst, dateRange } from "./format";
 
 function bullets(items?: string[]) {
   return (items ?? []).map((text) => `- ${text}`);
@@ -34,7 +34,8 @@ const sectionWriters: Record<
 > = {
   experience(lines, section) {
     if (section.type !== "experience") return;
-    for (const item of section.items ?? []) {
+    const items = [...(section.items ?? [])].sort(compareExperienceNewestFirst);
+    for (const item of items) {
       const title = [item.role, item.company].filter(Boolean).join(" — ");
       lines.push(heading(title, dateRange(item.start, item.end)));
       if (item.location) lines.push(`_${item.location}_`);

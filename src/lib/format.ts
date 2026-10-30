@@ -13,6 +13,15 @@ export function parseResumeDate(value?: string) {
   return Number.isNaN(time) ? 0 : time;
 }
 
+export function compareExperienceNewestFirst(
+  a: { start?: string; end?: string },
+  b: { start?: string; end?: string },
+) {
+  const start = parseResumeDate(b.start) - parseResumeDate(a.start);
+  if (start !== 0) return start;
+  return parseResumeDate(b.end) - parseResumeDate(a.end);
+}
+
 export function findSection<T extends ResumeSection["type"]>(
   sections: ResumeSection[],
   type: T,

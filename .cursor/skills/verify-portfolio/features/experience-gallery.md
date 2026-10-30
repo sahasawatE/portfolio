@@ -36,7 +36,7 @@ Preconditions:
 - Thumbnail buttons have no aria-label. The alt is on the inner `img` (`<role> at <company> <n>`, n starting at 1). The accessibility snapshot still shows those buttons with no name, and it does not list the images. Resolve the ref from the alt before clicking.
 - `browser_mouse_click_xy` requires a screenshot taken immediately before that click. Other browser calls clear the coordinate cache.
 - Jobs without an `images` array have no gallery. Frontend Developer at Abbot Technology and Automation Tester at Playtorium Solution are not gallery entry points.
-- The page sorts jobs by start date, oldest first. Bitkub (Jun 2021) is the first work card, not the last.
+- The page sorts jobs by start date, newest first. Project Manager is the first work card. Bitkub (Jun 2021) is the last.
 - Right arrow on the last photo wraps to the first. Left arrow on the first photo wraps to the last.
 - Lenis may leave the thumbnail off screen. Scroll it into view, then click. A click that hits nothing is a failed drive, not a missing gallery.
 - Escape is listened for on `window` only while a photo is open.

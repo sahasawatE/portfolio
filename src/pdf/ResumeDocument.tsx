@@ -16,7 +16,7 @@ import type {
   SkillsSection,
 } from "../types/resume";
 import { normalizeLinks } from "../lib/links";
-import { dateRange } from "../lib/format";
+import { compareExperienceNewestFirst, dateRange } from "../lib/format";
 
 const styles = StyleSheet.create({
   page: {
@@ -171,7 +171,7 @@ function ExperienceBlock({ section }: { section: ExperienceSection }) {
   return (
     <View style={styles.section}>
       <Text style={styles.sectionTitle}>{section.title}</Text>
-      {section.items.map((item) => (
+      {[...section.items].sort(compareExperienceNewestFirst).map((item) => (
         <View
           key={`${item.role}-${item.company}-${item.start}`}
           style={styles.entry}

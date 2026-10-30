@@ -27,4 +27,4 @@ Preconditions:
 - If the browser tooling cannot read the download, report `md-download` as unverified and include the error. Do not call `toMarkdown` or `downloadMarkdown` and present that as this proof.
 - The filename comes from the resume name: lower case, spaces become hyphens, then `-resume.md`. The current name produces `sahasawat-uengwanitchaphan-resume.md`.
 - Below 640px the words `Download .md` are hidden and the button has no accessible name.
-- The Markdown keeps JSON order. The page shows work oldest-first. A difference in order is not a failure of this download proof.
+- The Markdown lists work newest first, the same order as the page. A matching order is not a failure of this download proof.

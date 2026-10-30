@@ -4,7 +4,7 @@ import { Gallery } from "@/components/ui/Gallery";
 import { GlassSurface } from "@/components/ui/GlassSurface";
 import { Highlights } from "@/components/ui/Highlights";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { dateRange, parseResumeDate } from "@/lib/format";
+import { compareExperienceNewestFirst, dateRange } from "@/lib/format";
 import type { ExperienceItem, ExperienceSection } from "@/types/resume";
 
 type ExperienceProps = {
@@ -30,11 +30,7 @@ function ExperienceCard({ item }: { item: ExperienceItem }) {
 export function Experience({ section }: ExperienceProps) {
   if (!section.items?.length) return null;
 
-  const items = [...section.items].sort((a, b) => {
-    const start = parseResumeDate(a.start) - parseResumeDate(b.start);
-    if (start !== 0) return start;
-    return parseResumeDate(a.end) - parseResumeDate(b.end);
-  });
+  const items = [...section.items].sort(compareExperienceNewestFirst);
 
   return (
     <section className="section-block">
