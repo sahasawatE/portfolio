@@ -1,0 +1,13 @@
+feature: experience-gallery
+run: verify-1
+port: 5173
+entry: Bitkub thumbnail
+
+Action: Escape after ArrowRight.
+Result: .fixed.inset-0 count 0, body overflow empty, both Bitkub images back to 256px thumbnails.
+
+Action: open Bitkub 1 again, screenshot, click viewport (24, 16) which hit div.fixed.inset-0.
+Result: the overlay closed. The snapshot no longer shows the thumbnail as focused from the lightbox.
+
+Page title: Sahasawat Uengwanitchaphan.
+Abbot part-time photos were not driven in this run.

@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from "@react-pdf/renderer";
+import "./registerFonts";
 import type {
   EducationSection,
   ExperienceSection,
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     paddingBottom: 40,
     paddingHorizontal: 40,
-    fontFamily: "Helvetica",
+    fontFamily: "Noto Sans Thai",
     fontSize: 9.2,
     lineHeight: 1.4,
     color: "#111827",
